@@ -46,6 +46,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
             fps_counter = 0; // カウンター初期化
             fps_timer = now_time; // 現在の時刻を最後に更新した時間として記憶
+
         }
 
         Keyboard::update();
