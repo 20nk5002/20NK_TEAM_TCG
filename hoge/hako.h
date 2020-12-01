@@ -1,6 +1,10 @@
 #pragma once
 
 class Hako {
+private:
+    int texture;
+    int box_x, box_y;
+
 public:
     Hako();
     ~Hako();
