@@ -5,6 +5,8 @@
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
+    SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
+
     // DXライブラリの事前設定
     ChangeWindowMode( true );      // ウィンドウモード
     SetGraphMode( 1280, 720, 32 ); // 画面解像度の指定
