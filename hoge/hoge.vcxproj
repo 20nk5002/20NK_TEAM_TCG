@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fade.h" />
+    <ClInclude Include="game.h" />
     <ClInclude Include="hako.h" />
     <ClInclude Include="hasigo.h" />
     <ClInclude Include="kannatuban.h" />

@@ -26,15 +26,18 @@ bool Player_Mesu ::init()
     }
     return true;
     }
-void  Player_Mesu::update() 
+void  Player_Mesu::update()
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
-    const char* keys[] = Keyboard::getPressed();
+    // const char* keys[] = Keyboard::getPressed();
 
-      if( Keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ]
-    }
+    //if( Keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] )
+    //{
+
+    //}
+}
 void  Player_Mesu::draw()
 {
 

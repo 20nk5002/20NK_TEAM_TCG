@@ -23,7 +23,7 @@ bool Map::init()
 {
     map_texture_ = 0;
     width_ = height_ = 0;
-    map_type_ = 0;
+    map_type_ = 2;
 
     FILE* fp;
 
@@ -34,8 +34,8 @@ bool Map::init()
     }
 
     char file_name[ _MAX_PATH ];
-    //sprintf( file_name, "map_type%d.fmf", map_type_ );
-    sprintf( file_name, "hako.fmf" );
+    sprintf( file_name, "map_type%d.fmf", map_type_ );
+    //sprintf( file_name, "hako.fmf" );
     fp = fopen( file_name, "rb" );
 
     // NULLチェック
