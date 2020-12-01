@@ -27,8 +27,10 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="player_mesu.cpp" />
     <ClCompile Include="player_osu.cpp" />
+    <ClCompile Include="fade.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fade.h" />
     <ClInclude Include="hako.h" />
     <ClInclude Include="hasigo.h" />
     <ClInclude Include="kannatuban.h" />
