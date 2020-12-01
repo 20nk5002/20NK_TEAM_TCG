@@ -7,9 +7,9 @@ Hako::~Hako() {
 
 }
 
-bool Hako::init() {
 
-}
+
+
 void Hako::update() {
 
 }
