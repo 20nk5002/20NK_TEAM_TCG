@@ -2,6 +2,9 @@
 
 class Kannatu {
 public:
+    Kannatu();
+    ~Kannatu();
+
     bool init();
     void update();
     void draw();

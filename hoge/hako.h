@@ -2,6 +2,9 @@
 
 class Hako {
 public:
+    Hako();
+    ~Hako();
+
     bool init();
     void update();
     void draw();

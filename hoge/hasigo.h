@@ -2,6 +2,9 @@
 
 class Hasigo {
 public:
+    Hasigo();
+    ~Hasigo();
+
     bool init();
     void update();
     void draw();
