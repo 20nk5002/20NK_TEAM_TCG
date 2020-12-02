@@ -34,7 +34,7 @@ bool Map::init()
     }
 
     char file_name[ _MAX_PATH ];
-    sprintf( file_name, "map_type%d.fmf", map_type_ );
+    sprintf( file_name, "stage%d.fmf", map_type_ );
     //sprintf( file_name, "hako.fmf" );
     fp = fopen( file_name, "rb" );
 
@@ -94,8 +94,9 @@ void Map::draw()
     for( int i = 0; i < width_ * height_; i++ )
     {
         // 全チップの描画
-        if(chips[i].id==0 || chips[ i ].id == 1 || chips[ i ].id == 3||chips[ i ].id == 4 || chips[ i ].id == 5 || chips[ i ].id == 6 || chips[ i ].id == 7 || chips[ i ].id == 8 || chips[ i ].id == 9 )
-        DrawRectGraph( chips[ i ].x_ , chips[ i ].y_ , chips[ i ].trim_x_, chips[ i ].trim_y_, 64 , 64, map_texture_, true );
+        if( chips[ i ].id <= 8 ) {
+            DrawRectGraph( chips[ i ].x_, chips[ i ].y_, chips[ i ].trim_x_, chips[ i ].trim_y_, 64, 64, map_texture_, true );
+        }
         DrawFormatString( chips[ i ].x_, chips[ i ].y_, 0xFFFFFF, " %d\n", chips[ i ].id );
     }
 }
