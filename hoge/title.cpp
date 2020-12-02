@@ -11,7 +11,7 @@ Title::~Title() {
 bool Title::init()
 {
     //テクスチャの読み込み
-    if( (texrure_ = LoadGraph( "karichip.png" )) == -1 ) {
+    if( (texrure_ = LoadGraph( "title.png" )) == -1 ) {
         return false;
     }
 
