@@ -14,6 +14,10 @@
 class Game
 {
 private:
+    Player_Mesu player_Mesu;
+    Player_Osu player_Osu;
+    Map map;
+    Keyboard keboard;
    
 public:
     Game();

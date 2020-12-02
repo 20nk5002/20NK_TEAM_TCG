@@ -2,6 +2,19 @@
 #include "DxLib.h"
 #include "keys.h"
 #include"map.h"
+#include"game.h"
+
+// シーン管理列挙体
+enum
+{
+    kTITLE_INIT,
+    kTIRLE_UPDATE,
+    kGAME_INIT,
+    kGAME_UPDATE,
+    kFADE_UPDATE1
+
+};
+
 
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
@@ -20,9 +33,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         // エラー
         return 0;
     }
-    int x = 0;
-    int y = 0;
-    int texture = LoadGraph( "pic.png" );
+
+    Fade fade;
+
 
     Map map;
 
@@ -38,6 +51,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     int fps_counter = 0;    // FPSカウント用
     LONGLONG fps_timer = 0; // 時刻の保存
     LONGLONG prev_time = 0; // １ループ前の時刻
+
+    // 作業番号数
+    int work = kTITLE_INIT;
+
 
     // メインループ
     while( ProcessMessage() != -1 )
@@ -59,13 +76,27 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
         }
 
-        Keyboard::update();
-        const char* held = Keyboard::getReleased();
-
-        if( held[ KEY_INPUT_RIGHT ] ) {
-            x++;
+        switch( work )
+        {
+        case kTITLE_INIT:  // タイトル初期化
+            if( title.init() == false )
+            {
+                return 0;
+            }
+            work = kTITLE_UPDATE;
+            break;
+        case kTITLE_UPDATE:
+            if( title.update() == false )
+            {
+                work = kFADE_UPDATE1;
+                continue;
+            }break;
+        case kFADE_UPDATE1:
+            if(fade.update()>=255)
         }
 
+        Keyboard::update();
+        const char* held = Keyboard::getReleased();
 
         // 画面初期化
         ClearDrawScreen();
