@@ -2,6 +2,10 @@
 #include"player_mesu.h"
 #include"keys.h"
 
+Chip_::Chip_() {
+
+}
+
 
 
 Player_Mesu::Player_Mesu() 
@@ -13,19 +17,74 @@ Player_Mesu::~Player_Mesu()
 {
     destroy();
 }
-bool Player_Mesu ::init()
+bool Player_Mesu::init()
 {
+
+    FILE* fp;
+
+    // テクスチャの読み込み
+
+    char file_name[ _MAX_PATH ];
+    sprintf( file_name, "stage%d.fmf", map_type_ );
+    //sprintf( file_name, "hako.fmf" );
+    fp = fopen( file_name, "rb" );
+
+    // NULLチェック
+    if( fp == NULL )
+    {
+        // エラー
+        return false;
+    }
+
+    fseek( fp, 8L, SEEK_SET );
+
+    fread( &width_, sizeof( int ), 1, fp );
+    fread( &height_, sizeof( int ), 1, fp );
+
+    // 横幅*縦幅のメモリを確保
+    chips = new Chip_[ width_ * height_ ];
+
+    // メモリが確保できたか
+    if( chips == NULL )
+    {
+        // エラー
+        return false;
+    }
+
+    // fmfヘッダー部分をスキップ
+    fseek( fp, 20L, SEEK_SET );
+
+    // 全チップデータの格納
+    for( int i = 0; i < width_ * height_; i++ )
+    {
+        fread( &chips[ i ].id, sizeof( char ), 1, fp );
+
+        if( chips[ i ].id == 11 ) {
+            is_where_ = i;
+        }
+
+        // 描画範囲の指定
+        chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
+        chips[ i ].trim_y_ = chips[ i ].id / 12 * 64;
+        // 座標の設定
+        chips[ i ].x_ = 64 * (i % width_);
+        chips[ i ].y_ = 64 * (i / width_);
+    }
+    // ファイルを閉じる
+    fclose( fp );
+
     textur = 0;
-    x_ = x1_ = 704;
-    y_ = y1_ = 0;
+    x_ = x1_ = is_where_ % 12 * 64;
+    y_ = y1_ = is_where_ / 12 * 64;
     f_ = 0;
-   
+
     if( (textur = LoadGraph( "karichip.png" )) == -1 ) {
-       
+
         return false;
     }
     return true;
-    }
+}
+
 void  Player_Mesu::update()
 {
     //コントローラーの入力の取得
