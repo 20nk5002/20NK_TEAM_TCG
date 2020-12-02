@@ -5,6 +5,7 @@
 bool Game::init() 
 {
     if( map.init() == false )return false;
+    return true;
 
 }
 void Game::update()
