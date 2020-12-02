@@ -7,9 +7,7 @@ Hasigo::~Hasigo() {
 
 }
 
-bool Hasigo::init() {
 
-}
 void Hasigo::update() {
 
     }

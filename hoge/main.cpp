@@ -1,6 +1,7 @@
 // Include
 #include "DxLib.h"
 #include "keys.h"
+#include"map.h"
 
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
@@ -22,6 +23,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     int x = 0;
     int y = 0;
     int texture = LoadGraph( "pic.png" );
+
+    Map map;
+
+    if( map.init() == -1 )
+    {
+        return 0;
+    }
 
 
     // 裏画面に描画
@@ -62,7 +70,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         // 画面初期化
         ClearDrawScreen();
 
-        DrawGraph( x, y, texture, 0 );
+      //  DrawGraph( x, y, texture, 0 );
+        map.draw();
 
         // 裏画面に描画した内容を表示
         ScreenFlip();
@@ -73,6 +82,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
     // DXライブラリの破棄
     DxLib_End();
+    map.destroy();
 
     return 0;
 }

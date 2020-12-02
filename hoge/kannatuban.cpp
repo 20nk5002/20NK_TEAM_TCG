@@ -7,9 +7,7 @@ Kannatu::~Kannatu() {
 
 }
 
-bool Kannatu::init() {
 
-}
 void Kannatu::update() {
 
 }
