@@ -23,7 +23,7 @@ bool Map::init()
 {
     map_texture_ = 0;
     width_ = height_ = 0;
-    map_type_ = 2;
+    map_type_ = 0;
 
     FILE* fp;
 
