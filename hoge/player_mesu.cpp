@@ -16,7 +16,7 @@ Player_Mesu::~Player_Mesu()
 bool Player_Mesu ::init()
 {
     textur = 0;
-    x_ = x1_ = 0;
+    x_ = x1_ = 704;
     y_ = y1_ = 0;
     f_ = 0;
    
