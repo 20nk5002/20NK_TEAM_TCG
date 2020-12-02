@@ -163,7 +163,7 @@ void  Player_Mesu::update()
 }
 void  Player_Mesu::draw()
 {
-    DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 0 );
+    DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 1 );
     }
 void  Player_Mesu::destroy()
 {
