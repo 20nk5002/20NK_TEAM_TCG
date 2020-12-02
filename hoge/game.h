@@ -18,7 +18,7 @@ private:
    
 public:
     bool init();
-    void update();
+    bool update();
     void draw();
     void destroy();
 };

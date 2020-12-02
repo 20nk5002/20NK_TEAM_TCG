@@ -14,11 +14,12 @@ bool Game::init()
     return true;
 
 }
-void Game::update()
+bool Game::update()
 {
     map.update();
     player_Mesu.update();
     player_Osu.update();
+    return true;
 }
 void Game::draw()
 {

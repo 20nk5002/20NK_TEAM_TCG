@@ -124,6 +124,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 work = kGAME_UPDATE0;
                 continue;
             }break;
+        case kGAME_UPDATE0:
+            if( game.update() == false )
+            {
+                work = kFADE_UPDATE2;
+                continue;
+            }break;
         }
 
         Keyboard::update();
