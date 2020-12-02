@@ -1,5 +1,6 @@
 #include"DxLib.h"
 #include"title.h"
+#include"keys.h"
 
 
 Title::Title() {
@@ -11,7 +12,7 @@ Title::~Title() {
 bool Title::init()
 {
     //テクスチャの読み込み
-    if( (texrure_ = LoadGraph( "karichip.png" )) == -1 ) {
+    if( (texrure_ = LoadGraph( "title.png" )) == -1 ) {
         return false;
     }
 
@@ -19,8 +20,13 @@ bool Title::init()
 }
 bool Title::update()
 {
-    //スペースキーが押されたらタイトル終了
-    if( CheckHitKey( KEY_INPUT_RETURN ) ) {
+    //コントローラーの入力の取得
+    XINPUT_STATE xinput;
+    GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
+
+    const char* keys = Keyboard::getPressed();
+    //Enterが押されたらタイトル終了
+    if( keys[ KEY_INPUT_RETURN ]|| PAD_INPUT_A ) {
         return false;
     }
     return true;
