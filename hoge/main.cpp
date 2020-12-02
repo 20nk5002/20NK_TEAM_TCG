@@ -1,8 +1,8 @@
 // Include
 #include "DxLib.h"
 #include "keys.h"
-#include"map.h"
 #include"game.h"
+#include"title.h"
 
 // シーン管理列挙体
 enum
@@ -34,12 +34,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         return 0;
     }
 
-    Fade fade;
+    
+    Game game;
 
-
-    Map map;
-
-    if( map.init() == -1 )
+    if( game.init() == -1 )
     {
         return 0;
     }
@@ -102,7 +100,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         ClearDrawScreen();
 
       //  DrawGraph( x, y, texture, 0 );
-        map.draw();
+        game.draw();
 
         // 裏画面に描画した内容を表示
         ScreenFlip();
@@ -113,7 +111,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
     // DXライブラリの破棄
     DxLib_End();
-    map.destroy();
+    game.destroy();
 
     return 0;
 }
