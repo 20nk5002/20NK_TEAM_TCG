@@ -11,7 +11,7 @@ Chip::Chip()
 
 Map::Map()
 {
-    init();
+   // init();
 }
 
 Map::~Map()
@@ -19,11 +19,11 @@ Map::~Map()
     destroy();
 }
 
-bool Map::init()
+bool Map::init( int map_Number_ )
 {
     map_texture_ = 0;
     width_ = height_ = 0;
-    map_type_ = 0;
+    map_type_ = map_Number_;
 
     FILE* fp;
 

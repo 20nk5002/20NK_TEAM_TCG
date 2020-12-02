@@ -11,21 +11,21 @@ Chip_3::Chip_3() {
 
 Player_Osu::Player_Osu()
 {
-    init();
+   // init();
 }
 
 Player_Osu::~Player_Osu()
 {
     destroy();
 }
-bool Player_Osu::init()
+bool Player_Osu::init( int map_Number_ )
 {
     FILE* fp;
 
     // テクスチャの読み込み
 
     char file_name[ _MAX_PATH ];
-    sprintf( file_name, "stage%d.fmf", map_type_ );
+    sprintf( file_name, "stage%d.fmf", map_Number_ );
     //sprintf( file_name, "hako.fmf" );
     fp = fopen( file_name, "rb" );
 
