@@ -84,15 +84,16 @@ bool Player_Osu::init()
 
     return true;
 }
+//アップデート　男
 void Player_Osu::update()
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
-    const char* keys = Keyboard::getPressed();
+    const char* keys = Keyboard::getHeld();
 
     //右移動　フラグ　1
-    if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] && f_ == 0 )
+    if( keys[ KEY_INPUT_RIGHT ]  || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] && f_ == 0 )
     {
         if( f_ & 1 ) {
 
@@ -102,7 +103,7 @@ void Player_Osu::update()
         }
     }
     //左移動　フラグ　2
-    else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
+    else  if( keys[ KEY_INPUT_LEFT ]  || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
 
         if( f_ & 2 ) {
 
@@ -114,13 +115,13 @@ void Player_Osu::update()
     }
 
     //上移動　フラグ4
-    else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
+    else  if( keys[ KEY_INPUT_UP ]  || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
 
-        if( f_ & 8 ) {
+        if( f_ & 4 ) {
 
         }
         else {
-            f_ += 8;
+            f_ += 4;
         }
     }
 
@@ -162,6 +163,8 @@ void Player_Osu::update()
 void Player_Osu:: draw()
 {
     DrawRectGraph( x_, y_, 10 * 64, 0, 64, 64, textur, 0 );
+    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%6d:%d:%d", x_, y_, f_ );
+
 }
 void Player_Osu::destroy()
 {
