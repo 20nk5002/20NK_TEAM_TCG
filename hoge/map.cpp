@@ -23,7 +23,7 @@ bool Map::init()
 {
     map_texture_ = 0;
     width_ = height_ = 0;
-    map_type_ = 3;
+    map_type_ = 2;
 
     FILE* fp;
 
@@ -94,7 +94,9 @@ void Map::draw()
     for( int i = 0; i < width_ * height_; i++ )
     {
         // 全チップの描画
+        if(chips[i].id==0 || chips[ i ].id == 1 || chips[ i ].id == 3||chips[ i ].id == 4 || chips[ i ].id == 5 || chips[ i ].id == 6 || chips[ i ].id == 7 || chips[ i ].id == 8 || chips[ i ].id == 9 )
         DrawRectGraph( chips[ i ].x_ , chips[ i ].y_ , chips[ i ].trim_x_, chips[ i ].trim_y_, 64 , 64, map_texture_, true );
+        DrawFormatString( chips[ i ].x_, chips[ i ].y_, 0xFFFFFF, " %d\n", chips[ i ].id );
     }
 }
 
