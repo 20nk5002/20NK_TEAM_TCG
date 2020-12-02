@@ -29,6 +29,7 @@
     <ClCompile Include="player_mesu.cpp" />
     <ClCompile Include="player_osu.cpp" />
     <ClCompile Include="fade.cpp" />
+    <ClCompile Include="title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fade.h" />
@@ -40,6 +41,7 @@
     <ClInclude Include="map.h" />
     <ClInclude Include="player_mesu.h" />
     <ClInclude Include="player_osu.h" />
+    <ClInclude Include="title.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
