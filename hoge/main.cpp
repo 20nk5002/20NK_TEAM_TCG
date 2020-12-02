@@ -3,15 +3,17 @@
 #include "keys.h"
 #include"game.h"
 #include"title.h"
+#include"fade.h"
 
 // シーン管理列挙体
 enum
 {
     kTITLE_INIT,
-    kTIRLE_UPDATE,
+    kTITLE_UPDATE,
     kGAME_INIT,
     kGAME_UPDATE,
-    kFADE_UPDATE1
+    kFADE_UPDATE1,
+    kFADE_UPDATE2
 
 };
 
@@ -34,8 +36,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         return 0;
     }
 
-    
+    Title title;
     Game game;
+    Fade fade;
 
     if( game.init() == -1 )
     {
@@ -90,7 +93,24 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 continue;
             }break;
         case kFADE_UPDATE1:
-            if(fade.update()>=255)
+            if( fade.update() >= 255 )
+            {
+                work = kGAME_INIT;
+                continue;
+            }break;
+        case kGAME_INIT:
+            if( game.init() == false )
+            {
+                return 0;
+            }
+            work = kFADE_UPDATE2;
+            break;
+        case kFADE_UPDATE2:
+            if( fade.update() <= 0 )
+            {
+                work = kGAME_UPDATE;
+                continue;
+            }break;
         }
 
         Keyboard::update();
@@ -100,8 +120,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         ClearDrawScreen();
 
       //  DrawGraph( x, y, texture, 0 );
-        game.draw();
-
+        switch( work )
+        {
+        case kTITLE_UPDATE:title.draw(); break;
+           case kGAME_UPDATE : game.draw(); break;
+        }
         // 裏画面に描画した内容を表示
         ScreenFlip();
 
