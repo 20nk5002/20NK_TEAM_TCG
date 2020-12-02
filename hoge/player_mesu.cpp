@@ -3,7 +3,9 @@
 #include"keys.h"
 
 Chip_::Chip_() {
-
+    x_ = y_ = 0;
+    trim_x_ = trim_y_ = 0;
+    id = 0;
 }
 
 
@@ -58,24 +60,23 @@ bool Player_Mesu::init()
     for( int i = 0; i < width_ * height_; i++ )
     {
         fread( &chips[ i ].id, sizeof( char ), 1, fp );
-
         if( chips[ i ].id == 11 ) {
             is_where_ = i;
         }
 
-        // 描画範囲の指定
+ /*       // 描画範囲の指定
         chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
         chips[ i ].trim_y_ = chips[ i ].id / 12 * 64;
         // 座標の設定
         chips[ i ].x_ = 64 * (i % width_);
-        chips[ i ].y_ = 64 * (i / width_);
+        chips[ i ].y_ = 64 * (i / width_);*/
     }
     // ファイルを閉じる
     fclose( fp );
 
     textur = 0;
-    x_ = x1_ = is_where_ % 12 * 64;
-    y_ = y1_ = is_where_ / 12 * 64;
+    x_ = x1_ = is_where_ % 20 * 64;
+    y_ = y1_ = is_where_ / 20 * 64;
     f_ = 0;
 
     if( (textur = LoadGraph( "karichip.png" )) == -1 ) {
@@ -162,7 +163,7 @@ void  Player_Mesu::update()
 }
 void  Player_Mesu::draw()
 {
-    DrawRectGraph( x_, y_, 12 * 64, 0, 64, 64, textur, 0 );
+    DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 0 );
     }
 void  Player_Mesu::destroy()
 {
