@@ -25,8 +25,8 @@ bool Title::update()
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
 
     const char* keys = Keyboard::getPressed();
-    //Enterが押されたらタイトル終了
-    if( keys[ KEY_INPUT_RETURN ] ) {
+    //スペースキーが押されたらタイトル終了
+    if( keys[ KEY_INPUT_SPACE ] || xinput.Buttons[ XINPUT_BUTTON_A ] == 1 ) {
         return false;
     }
     return true;

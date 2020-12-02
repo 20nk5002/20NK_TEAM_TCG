@@ -10,11 +10,24 @@ enum
 {
     kTITLE_INIT,
     kTITLE_UPDATE,
-    kGAME_INIT,
-    kGAME_UPDATE,
+    kGAME_INIT0,
+    kGAME_INIT1,
+    kGAME_INIT2,
+    kGAME_INIT3,
+    kGAME_UPDATE0,
+    kGAME_UPDATE1,
+    kGAME_UPDATE2,
+    kGAME_UPDATE3,
+    kFADE_UPDATE0,
     kFADE_UPDATE1,
-    kFADE_UPDATE2
-
+    kFADE_UPDATE2,
+    kFADE_UPDATE3,
+    kFADE_UPDATE4,
+    kFADE_UPDATE5,
+    kFADE_UPDATE6,
+    kFADE_UPDATE7,
+    kFADE_UPDATE8,
+    kFADE_UPDATE9,
 };
 
 
@@ -89,26 +102,26 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kTITLE_UPDATE:
             if( title.update() == false )
             {
-                work = kFADE_UPDATE1;
+                work = kFADE_UPDATE0;
                 continue;
             }break;
-        case kFADE_UPDATE1:
+        case kFADE_UPDATE0:
             if( fade.update() >= 255 )
             {
-                work = kGAME_INIT;
+                work = kGAME_INIT0;
                 continue;
             }break;
-        case kGAME_INIT:
+        case kGAME_INIT0:
             if( game.init() == false )
             {
                 return 0;
             }
-            work = kFADE_UPDATE2;
+            work = kFADE_UPDATE1;
             break;
-        case kFADE_UPDATE2:
+        case kFADE_UPDATE1:
             if( fade.update() <= 0 )
             {
-                work = kGAME_UPDATE;
+                work = kGAME_UPDATE0;
                 continue;
             }break;
         }
@@ -122,10 +135,18 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
       //  DrawGraph( x, y, texture, 0 );
         switch( work )
         {
-        case kFADE_UPDATE1:
-        case kTITLE_UPDATE:title.draw(); break;
+        case kFADE_UPDATE0:
         case kFADE_UPDATE2:
-        case kGAME_UPDATE: game.draw(); break;
+        case kFADE_UPDATE4:
+        case kFADE_UPDATE6:
+        case kFADE_UPDATE8:
+        case kTITLE_UPDATE:title.draw(); break;
+        case kFADE_UPDATE1:
+        case kFADE_UPDATE3:
+        case kFADE_UPDATE5:
+        case kFADE_UPDATE7:
+        case kFADE_UPDATE9:
+        case kGAME_UPDATE0: game.draw(); break;
         }
         fade.draw();
         // — ‰æ–Ê‚É•`‰æ‚µ‚½“à—e‚ð•\Ž¦
