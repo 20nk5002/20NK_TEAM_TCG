@@ -26,7 +26,7 @@ bool Title::update()
 
     const char* keys = Keyboard::getPressed();
     //Enterが押されたらタイトル終了
-    if( keys[ KEY_INPUT_RETURN ]|| PAD_INPUT_A ) {
+    if( keys[ KEY_INPUT_RETURN ] ) {
         return false;
     }
     return true;

@@ -122,9 +122,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
       //  DrawGraph( x, y, texture, 0 );
         switch( work )
         {
+        case kFADE_UPDATE1:
         case kTITLE_UPDATE:title.draw(); break;
-           case kGAME_UPDATE : game.draw(); break;
+        case kFADE_UPDATE2:
+        case kGAME_UPDATE: game.draw(); break;
         }
+        fade.draw();
         // — ‰æ–Ê‚É•`‰æ‚µ‚½“à—e‚ð•\Ž¦
         ScreenFlip();
 
