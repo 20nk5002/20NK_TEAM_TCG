@@ -1,5 +1,5 @@
 #pragma once
-class Player_Mesu
+class Player_Osu
 {
 private:
     int textur;
@@ -8,8 +8,8 @@ private:
 
 
 public:
-    Player_Mesu();
-    ~Player_Mesu();
+    Player_Osu();
+    ~Player_Osu();
     bool init();
     void update();
     void draw();

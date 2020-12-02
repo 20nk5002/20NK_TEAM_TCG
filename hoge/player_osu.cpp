@@ -1,19 +1,19 @@
 #include"DxLib.h"
-#include"player_mesu.h"
+#include"player_osu.h"
 #include"keys.h"
 
 
 
-Player_Mesu::Player_Mesu()
+Player_Osu::Player_Osu()
 {
     init();
 }
 
-Player_Mesu::~Player_Mesu()
+Player_Osu::~Player_Osu()
 {
     destroy();
 }
-bool Player_Mesu::init()
+bool Player_Osu::init()
 {
     textur = 0;
     x_ = x1_ = 704;
@@ -26,7 +26,7 @@ bool Player_Mesu::init()
     }
     return true;
 }
-void  Player_Mesu::update()
+void Player_Osu::update()
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
@@ -101,11 +101,11 @@ void  Player_Mesu::update()
 
 
 }
-void  Player_Mesu::draw()
+void Player_Osu:: draw()
 {
     DrawRectGraph( x_, y_, 12 * 64, 0, 64, 64, textur, 0 );
 }
-void  Player_Mesu::destroy()
+void Player_Osu::destroy()
 {
     //グラフィックハンドルの開放
     if( textur != 0 ) {
