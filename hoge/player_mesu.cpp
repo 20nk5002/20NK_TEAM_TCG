@@ -92,7 +92,7 @@ int  Player_Mesu::update()
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
-    const char* keys = Keyboard::getPressed();
+    const char* keys = Keyboard::getHeld();
 
     if( (chips[ is_where_ + 20 ].id) == 0 ) {
         f_ = 16;
@@ -108,6 +108,7 @@ int  Player_Mesu::update()
     {
 
         if( f_ != 0 ) {}
+       //if( )
         else if( f_ & 1 ) {
 
         }
@@ -116,7 +117,7 @@ int  Player_Mesu::update()
         }
     }
     //左移動　フラグ　2
-    else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
+    else  if( keys[ KEY_INPUT_LEFT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
 
         if( x_ != 0 ) {
             if( f_ != 0 ) {}
@@ -131,7 +132,7 @@ int  Player_Mesu::update()
     }
 
     //上移動　フラグ4
-    else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
+    else  if( keys[ KEY_INPUT_UP ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
         if( (chips[ is_where_ ].id) == 2 ) {
             if( f_ != 0 ) {}
             else if( f_ & 8 ) {
@@ -191,7 +192,7 @@ int  Player_Mesu::update()
     }
     if( fall_  >32 ) {
         
-         return 0;
+         return 10;
     }
    
 
