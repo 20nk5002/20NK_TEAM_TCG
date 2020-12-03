@@ -4,6 +4,7 @@
 #include"game.h"
 #include"title.h"
 #include"fade.h"
+#include"allstageclear.h"
 
 // シーン管理列挙体
 enum
@@ -56,6 +57,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     Title title;
     Game game;
     Fade fade;
+    Allclear allclear;
+    
 
     // 裏画面に描画
     SetDrawScreen( DX_SCREEN_BACK );
@@ -133,7 +136,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 game.destroy();
                 continue;
             }break;
-        case  kGAME_CLEAR:break;
+        case  kGAME_CLEAR:
+            if( allclear.init() == false )
+            {
+                return 0;
+            }break;
         }
 
         Keyboard::update();
@@ -157,7 +164,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE7:
         case kFADE_UPDATE9:
         case kGAME_UPDATE0: game.draw(); break;
-        case kGAME_CLEAR:
+        case kGAME_CLEAR:allclear.draw(); break;
         }
         fade.draw();
         // 裏画面に描画した内容を表示
