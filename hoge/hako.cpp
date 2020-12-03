@@ -55,14 +55,12 @@ bool Hako::init( const int n , int map_Number_ ) {
         if( chips[ i ].id == 9 ) {
             if( n2 == 0 ) {
                 is_where_ = i;
+                break;
             }
             else {
                 n2 -= 1;
             }
         }
-
-        box_x = is_where_ % 20 * 64;
-        box_y = is_where_ / 20 * 64;
 
         /*       // 描画範囲の指定
                chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
@@ -71,6 +69,8 @@ bool Hako::init( const int n , int map_Number_ ) {
                chips[ i ].x_ = 64 * (i % width_);
                chips[ i ].y_ = 64 * (i / width_);*/
     }
+    box_x = is_where_ % 20 * 64;
+    box_y = is_where_ / 20 * 64;
     // ファイルを閉じる
     fclose( fp );
 
