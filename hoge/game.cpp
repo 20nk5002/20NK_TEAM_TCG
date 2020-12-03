@@ -16,7 +16,7 @@ bool Game::init( int map_Number_ )
     return true;
 
 }
-int osumesuhit = 1;
+int osumesuhit = 0;
 int handole = 0;
 bool Game::update()
 {
