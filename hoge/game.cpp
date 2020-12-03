@@ -55,7 +55,7 @@ void Game::draw()
     map.draw();
     player_Mesu.draw();
     player_Osu.draw();
-    for( int i = 0; i < 5; i++ ) {
+    for( int i = 0; i < 6; i++ ) {
         hako[ i ].draw();
     }
     clear.draw();
@@ -65,7 +65,7 @@ void Game::destroy()
     map.destroy();
     player_Mesu.destroy();
     player_Osu.destroy();
-    for( int i = 0; i < 5; i++ ) {
+    for( int i = 0; i < 6; i++ ) {
         hako[ i ].destroy();
     }
     clear.destroy();
