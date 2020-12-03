@@ -132,7 +132,8 @@ int Player_Osu::update()
         }
         else {
             f_ -= 1;
-            x1_ = x_; //is_where_‚ğ1‰ÁZ
+            x1_ = x_; 
+            is_where_ =+ 1;
         }
     }
     //¶ˆÚ“®
@@ -143,18 +144,20 @@ int Player_Osu::update()
         }
         else {
             f_ -= 2;
-            x1_ = x_; //is_where_‚ğ1Œ¸Z
+            x1_ = x_;
+            is_where_ -= 1;
         }
 
     }
-    if( f_ & 4 ) {
+    if( f_ & 8 ) {
 
         if( y1_ - 64 != y_ ) {
             y_ -= 4;
         }
         else {
             f_ -= 8;
-            y1_ = y_; //is_where_‚ğ20Œ¸Z
+            y1_ = y_;
+            is_where_ -= 20;
         }
     }
 

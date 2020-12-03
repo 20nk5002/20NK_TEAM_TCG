@@ -86,7 +86,7 @@ bool Player_Mesu::init( int map_Number_ )
     return true;
 }
 
-void  Player_Mesu::update()
+int  Player_Mesu::update()
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
@@ -135,6 +135,7 @@ void  Player_Mesu::update()
         else {
             f_ -= 1;
             x1_ = x_;
+            is_where_ = +1;
         }
     }
     //左移動
@@ -146,10 +147,11 @@ void  Player_Mesu::update()
         else {
             f_ -= 2;
             x1_ = x_;
+            is_where_ = -1;
         }
 
     }
-    if( f_ & 4 ) {
+    if( f_ & 8 ) {
       
         if( y1_ - 64 != y_ ) {
             y_ -= 4;
@@ -157,9 +159,10 @@ void  Player_Mesu::update()
         else {
             f_ -= 8;
             y1_ = y_;
+            is_where_ = -20;
         }
     }
-
+    return is_where_;
 
 }
 void  Player_Mesu::draw()
