@@ -83,7 +83,7 @@ void Hako::update() {
 
 }
 void Hako::draw() {
-    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 0, texture, 0 );
+    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 0 );
 }
 void Hako::destroy() {
     delete[] chips;
