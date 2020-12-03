@@ -96,7 +96,8 @@ void  Player_Mesu::update()
      //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] && f_ == 0 )
     {
-        if( f_ & 1 ) {
+        if( f_ != 0 ) {}
+        else if( f_ & 1 ) {
 
         }
         else {
@@ -105,8 +106,8 @@ void  Player_Mesu::update()
     }
     //左移動　フラグ　2
     else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
-
-        if( f_ & 2 ) {
+        if( f_ != 0 ) {}
+        else if( f_ & 2 ) {
 
         }
     
@@ -117,8 +118,8 @@ void  Player_Mesu::update()
 
     //上移動　フラグ4
     else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
-
-        if( f_ & 8 ) {
+        if( f_ != 0 ) {}
+        else if( f_ & 8 ) {
 
         }
         else {
