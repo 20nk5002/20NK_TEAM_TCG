@@ -12,7 +12,6 @@ struct Chip_4
 
 class Hako {
 private:
-    FILE* fp;
 
     int texture;
     int box_x, box_y;
