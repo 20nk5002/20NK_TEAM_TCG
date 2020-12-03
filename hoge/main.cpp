@@ -28,6 +28,7 @@ enum
     kFADE_UPDATE7,
     kFADE_UPDATE8,
     kFADE_UPDATE9,
+    kGAME_CLEAR
 };
 
 
@@ -114,6 +115,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 return 0;
             }
             map_Number_++;
+            if( map_Number_ > 3 ) {
+                work = kGAME_CLEAR;
+            }
             work = kFADE_UPDATE1;
             break;
         case kFADE_UPDATE1:
@@ -129,6 +133,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 game.destroy();
                 continue;
             }break;
+        case  kGAME_CLEAR:break;
         }
 
         Keyboard::update();
