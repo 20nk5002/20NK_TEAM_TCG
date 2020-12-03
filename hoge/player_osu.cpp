@@ -106,6 +106,7 @@ int Player_Osu::update()
     {
        
             if( f_ != 0 ) {}
+            if( (chips[ is_where_ + 1 ].id) == 1 ){}
             else if( f_ & 1 ) {
 
             }
@@ -118,6 +119,7 @@ int Player_Osu::update()
 
         if( x_ != 0 ) {
             if( f_ != 0 ) {}
+            if( (chips[ is_where_ - 1 ].id) == 1 ) {}
             else if( f_ & 2 ) {
 
             }
@@ -130,7 +132,7 @@ int Player_Osu::update()
 
     //è„à⁄ìÆÅ@ÉtÉâÉO4
     else  if( keys[ KEY_INPUT_UP ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
-        if( (chips[ is_where_ ].id) == 2 ) {
+        if( (chips[ is_where_ ].id) == 2 || (chips[ is_where_ ].id) == 5 || (chips[ is_where_ ].id) == 2 ) {
             if( f_ != 0 ) {}
             else if( f_ & 8 ) {
 
