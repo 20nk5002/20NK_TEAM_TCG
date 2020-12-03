@@ -13,34 +13,22 @@ enum
 {
     kTITLE_INIT,
     kTITLE_UPDATE,
-    kGAME_INIT0,
-    kGAME_INIT1,
-    kGAME_INIT2,
-    kGAME_INIT3,
-    kGAME_UPDATE0,
-    kGAME_UPDATE1,
-    kGAME_UPDATE2,
-    kGAME_UPDATE3,
+    kGAME_INIT,
+    kGAME_UPDATE,
     kFADE_UPDATE0,
     kFADE_UPDATE1,
-    kFADE_UPDATE2,
-    kFADE_UPDATE3,
-    kFADE_UPDATE4,
-    kFADE_UPDATE5,
-    kFADE_UPDATE6,
-    kFADE_UPDATE7,
-    kFADE_UPDATE8,
-    kFADE_UPDATE9,
     kGAME_CLEAR,
-    kGAME_OVER
+    kGAME_OVER,
+    kSTOP_SCENE
 };
 
 
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 1;
+    int map_Number_ = 0;
     int scene_Change_ = 0;
+    int check_Botan_ = 0;
 
     SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
 
@@ -83,6 +71,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     // 作業番号数
     int work = kTITLE_INIT;
 
+    XINPUT_STATE xinput;
+    GetJoypadXInputState(DX_INPUT_PAD1, &xinput);
 
     // メインループ
     while( ProcessMessage() != -1 )
@@ -104,6 +94,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
         }
 
+        const char* keys = Keyboard::getPressed();
+        if (xinput.Buttons[XINPUT_BUTTON_A] == 1 || keys[KEY_INPUT_SPACE])
+        {
+            check_Botan_ = 1;
+        }
+        else
+            check_Botan_ = 0;
+
+
         switch( work )
         {
         case kTITLE_INIT:  // タイトル初期化
@@ -122,30 +121,28 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE0:
             if( fade.update() >= 255 )
             {
-                work = kGAME_INIT0;
+                work = kGAME_INIT;
                 continue;
             }break;
-        case kGAME_INIT0:
+        case kGAME_INIT:
             if( game.init( map_Number_ ) == false )
             {
                 return 0;
             }
             map_Number_++;
-            if( map_Number_ > 3 ) {
-                work = kGAME_CLEAR;
-            }
             work = kFADE_UPDATE1;
             break;
         case kFADE_UPDATE1:
             if( fade.update() <= 0 )
             {
-                work = kGAME_UPDATE0;
+                work = kGAME_UPDATE;
                 continue;
             }break;
-        case kGAME_UPDATE0:
+        case kGAME_UPDATE:
             scene_Change_ = game.update();
             if( scene_Change_ == 1 )
             {
+                work = kSTOP_SCENE;
                 //game.destroy();
             }
             else if( scene_Change_ == 2 )
@@ -159,10 +156,31 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 return 0;
             }break;
         case kGAME_OVER:
-            game.destroy();
+          
+            if (check_Botan_ == 1)
+            {
+                DxLib_End();
+                game.destroy();
+                allclear.destroy();
+                gameover.destroy();
+                clear.destroy();
+                return 0;
+            }
             break;
-        }
+        case kSTOP_SCENE:
+           
+            if (check_Botan_ == 1)
+            {
+                if (map_Number_ > 3) {
+                    work = kGAME_CLEAR;
+                }
+                else {
+                    work = kTITLE_INIT;
 
+                }
+            }break;
+        }
+        
         Keyboard::update();
         const char* held = Keyboard::getReleased();
 
@@ -173,17 +191,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         switch( work )
         {
         case kFADE_UPDATE0:
-        case kFADE_UPDATE2:
-        case kFADE_UPDATE4:
-        case kFADE_UPDATE6:
-        case kFADE_UPDATE8:
         case kTITLE_UPDATE:title.draw(); break;
         case kFADE_UPDATE1:
-        case kFADE_UPDATE3:
-        case kFADE_UPDATE5:
-        case kFADE_UPDATE7:
-        case kFADE_UPDATE9:
-        case kGAME_UPDATE0: game.draw(); break;
+        case kSTOP_SCENE:
+        case kGAME_UPDATE: game.draw(); break;
         case kGAME_CLEAR:allclear.draw(); break;
         case kGAME_OVER:gameover.draw(); break;
         }
