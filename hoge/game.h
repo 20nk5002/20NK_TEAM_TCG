@@ -5,6 +5,7 @@
 #include"map.h"
 #include"player_mesu.h"
 #include"player_osu.h"
+#include"hako.h"
 #include"keys.h"
 #include"clear.h"
 
@@ -14,6 +15,7 @@ class Game
 private:
     Player_Mesu player_Mesu;
     Player_Osu player_Osu;
+    Hako hako[ 6 ];
     Map map;
     Keyboard keboard;
     Clear clear;

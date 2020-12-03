@@ -9,7 +9,7 @@ public:
     Hako();
     ~Hako();
 
-    bool init();
+    bool init( int n );
     void update();
     void draw();
     void destroy();
