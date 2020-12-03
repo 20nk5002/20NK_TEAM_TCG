@@ -19,12 +19,12 @@ bool Game::init( int map_Number_ )
     return true;
 
 }
-int osumesuhit = 0;
+
 int handole = 0;
 int mesu_Position;
 int osu_Position;
 
-bool Game::update()
+int Game::update()
 {
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
@@ -45,19 +45,20 @@ bool Game::update()
     else {
          mesu_Position = player_Mesu.update();
     }
-    clear.update( osumesuhit );
+    clear.update( 0 );
     if(mesu_Position == osu_Position)
     {
-       return false;
+        clear.update( 255 );
+       return 1;
     }
     if( mesu_Position == 10 || osu_Position == 10 )
     {
         destroy();
         game_over_ = 1;
-        return false;
+        return 2;
     }
     
-    return true;
+    return 0;
 }
 void Game::draw()
 {

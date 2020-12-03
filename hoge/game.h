@@ -25,7 +25,7 @@ private:
    
 public:
     bool init(int map_Number_);
-    bool update();
+    int update();
     void draw();
     void destroy();
 };

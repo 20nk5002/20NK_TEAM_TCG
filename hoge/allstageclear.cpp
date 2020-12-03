@@ -3,7 +3,7 @@
 
 bool Allclear::init()
 {
-    transparent_ = 0;
+    transparent_ = 255;
     //テクスチャの読み込み
     if( (allclear_texture_ = LoadGraph( "allstageclear.png" )) == -1 ) {
         return false;

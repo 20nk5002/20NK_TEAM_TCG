@@ -202,7 +202,7 @@ int  Player_Mesu::update()
 }
 void  Player_Mesu::draw()
 {
-    DrawRectGraph( x_+4, y_, 11 * 64, 0, 64, 64, textur, 1 );
+    DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 1 );
     DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, f_ );
     }
 void  Player_Mesu::destroy()
