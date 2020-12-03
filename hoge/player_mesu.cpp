@@ -78,7 +78,7 @@ bool Player_Mesu::init( int map_Number_ )
     x_ = x1_ = is_where_ % 20 * 64;
     y_ = y1_ = is_where_ / 20 * 64;
     f_ = 0;
-
+    fall_ = 0;
     if( (textur = LoadGraph( "karichip.png" )) == -1 ) {
 
         return false;
@@ -93,6 +93,12 @@ int  Player_Mesu::update()
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
      const char* keys = Keyboard::getPressed();
+
+     if( (chips[ is_where_ ].id) != 2 && (chips[ is_where_ - 20 ].id) != 1 ) {
+         f_ = 8;
+         ++fall_;
+     }
+
 
      //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] && f_ == 0 )
@@ -121,7 +127,7 @@ int  Player_Mesu::update()
 
     //上移動　フラグ4
     else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
-        if( (chips[is_where_].id)== 2 ) {
+        if( (chips[ is_where_ ].id) == 2 ) {
             if( f_ != 0 ) {}
             else if( f_ & 8 ) {
 
@@ -166,6 +172,13 @@ int  Player_Mesu::update()
             y1_ = y_;
             is_where_ = -20;
         }
+    }
+    if( fall_ < 2 ) {
+        fall_ = 0;
+       // return 0;
+    }
+    else {
+        fall_ = 0;
     }
     return is_where_;
 

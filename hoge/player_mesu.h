@@ -19,6 +19,7 @@ private:
     int width_ = 0; int height_ = 0;
     int map_type_ = 0;
     int is_where_ = 0;
+    int fall_;
 
 
 public:
