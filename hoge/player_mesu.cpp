@@ -195,4 +195,6 @@ void  Player_Mesu::destroy()
         textur = 0;
 
     }
+    delete[] chips;
+    chips = NULL;
 }

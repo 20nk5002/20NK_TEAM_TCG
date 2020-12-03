@@ -196,4 +196,6 @@ void Player_Osu::destroy()
         textur = 0;
 
     }
+    delete[]  chips;
+    chips = NULL;
 }
