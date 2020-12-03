@@ -92,17 +92,17 @@ int  Player_Mesu::update()
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
-     const char* keys = Keyboard::getPressed();
+    const char* keys = Keyboard::getPressed();
 
-     if(  (chips[ is_where_ + 20 ].id) ==0 ) {
-         f_ = 16;
-         ++fall_;
-     }
+    if( (chips[ is_where_ + 20 ].id) == 0 ) {
+        f_ = 16;
+        ++fall_;
+    }
 
-
-     //右移動　フラグ　1
-    if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] && f_ == 0 )
+    //右移動　フラグ　1
+    if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] )
     {
+
         if( f_ != 0 ) {}
         else if( f_ & 1 ) {
 
@@ -113,6 +113,7 @@ int  Player_Mesu::update()
     }
     //左移動　フラグ　2
     else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
+
         if( x_ != 0 ) {
             if( f_ != 0 ) {}
             else if( f_ & 2 ) {
@@ -136,6 +137,7 @@ int  Player_Mesu::update()
                 f_ += 8;
             }
         }
+
     }
 
     //右移動
@@ -146,11 +148,11 @@ int  Player_Mesu::update()
         else {
             f_ -= 1;
             x1_ = x_;
-            is_where_ = +1;
+            is_where_ += 1;
         }
     }
     //左移動
-    if( f_ & 2 ) {
+    else if( f_ & 2 ) {
 
         if( x1_ - 64 != x_ ) {
             x_ -= 4;
@@ -158,19 +160,19 @@ int  Player_Mesu::update()
         else {
             f_ -= 2;
             x1_ = x_;
-            is_where_ = -1;
+            is_where_ -= 1;
         }
 
     }
     if( f_ & 8 ) {
-      
+
         if( y1_ - 64 != y_ ) {
             y_ -= 4;
         }
         else {
             f_ -= 8;
             y1_ = y_;
-            is_where_ = -20;
+            is_where_ -= 20;
         }
     }
     if( f_ & 16 ) {
@@ -180,18 +182,18 @@ int  Player_Mesu::update()
         else {
             f_ -= 16;
             y1_ = y_;
-            is_where_ = +20;
+            is_where_ += 20;
         }
     }
     if( fall_ < 2 ) {
-
         fall_ = 0;
-       // return 0;
+        // return 0;
     }
     else {
         if( (chips[ is_where_ + 20 ].id) == 0 )
-        fall_ = 0;
+            fall_ = 0;
     }
+
     return is_where_;
 
 }

@@ -180,7 +180,7 @@ int Player_Osu::update()
         else {
             f_ -= 16;
             y1_ = y_;
-            is_where_ = +20;
+            is_where_ += 20;
         }
     }
     if( fall_ < 2 ) {
