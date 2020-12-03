@@ -92,9 +92,13 @@ int Player_Osu::update()
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getPressed();
 
-    if(  (chips[ is_where_ + 20 ].id) ==0 ) {
+    if( (chips[ is_where_ + 20 ].id) == 0 ) {
         f_ = 16;
         ++fall_;
+    }
+    else
+    {
+        fall_ = 0;
     }
 
     //右移動　フラグ　1
@@ -183,13 +187,9 @@ int Player_Osu::update()
             is_where_ += 20;
         }
     }
-    if( fall_ < 2 ) {
-        fall_ = 0;
-       // return 0;
-    }
-    else {
-        if( (chips[ is_where_ + 20 ].id) == 0 )
-        fall_ = 0;
+    if( fall_ > 32 ) {
+
+        return 0;
     }
 
     return is_where_;
