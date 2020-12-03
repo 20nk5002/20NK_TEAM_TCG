@@ -16,8 +16,11 @@ bool Game::init( int map_Number_ )
     return true;
 
 }
-int osumesuhit = 1;
+int osumesuhit = 0;
 int handole = 0;
+int mesu_Position;
+int osu_Position;
+
 bool Game::update()
 {
     XINPUT_STATE xinput;
@@ -34,20 +37,17 @@ bool Game::update()
     }
     map.update();
     if(handole==0 ) {
-        player_Osu.update();
+         osu_Position = player_Osu.update();
     }
     else {
-        player_Mesu.update();
+         mesu_Position = player_Mesu.update();
     }
     clear.update( osumesuhit );
-    /* ì‚è•û‚ÌŠî”Õ—á
-    mesu_Position = uplayer_Mesu.update();
-    osu_Position = player_Osu.update();
     if(mesu_Position == osu_Position)
     {
        return false;
     }
-    */
+    
     return true;
 }
 void Game::draw()

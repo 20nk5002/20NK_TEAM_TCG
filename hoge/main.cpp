@@ -35,7 +35,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 1;
+    int map_Number_ = 2;
 
     SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
 
@@ -157,6 +157,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE7:
         case kFADE_UPDATE9:
         case kGAME_UPDATE0: game.draw(); break;
+        case kGAME_CLEAR:
         }
         fade.draw();
         // 裏画面に描画した内容を表示
