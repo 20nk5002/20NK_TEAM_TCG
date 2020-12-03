@@ -19,6 +19,12 @@ bool Hako::init( const int n , int map_Number_ ) {
     FILE* fp = 0;
     int n2 = n;
 
+
+    if( texture = LoadGraph( "karichip.png" ) == -1 ) {
+        return false;
+    }
+
+
     char file_name[ _MAX_PATH ];
     sprintf( file_name, "stage%d.fmf", map_Number_ );;
     fp = fopen( file_name, "rb" );
@@ -55,7 +61,10 @@ bool Hako::init( const int n , int map_Number_ ) {
         if( chips[ i ].id == 9 ) {
             if( n2 == 0 ) {
                 is_where_ = i;
-                break;
+                box_x = is_where_ % 20 * 64;
+                box_y = is_where_ / 20 * 64;
+                fclose( fp );
+                return true;
             }
             else {
                 n2 -= 1;
@@ -69,22 +78,21 @@ bool Hako::init( const int n , int map_Number_ ) {
                chips[ i ].x_ = 64 * (i % width_);
                chips[ i ].y_ = 64 * (i / width_);*/
     }
+    is_where_ = -1;
     box_x = is_where_ % 20 * 64;
     box_y = is_where_ / 20 * 64;
     // ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
     fclose( fp );
 
-    if( texture = LoadGraph( "karichip.png" ) == -1 ) {
-        return false;
-    }
     return true;
 }
 void Hako::update() {
 
 }
 void Hako::draw() {
-    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 0 );
+    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 1, 0, 0 ); //hako•`‰æ‚¤‚Ü‚­‚¢‚Á‚Ä‚È‚¢
 }
 void Hako::destroy() {
+    DeleteGraph( texture );
     delete[] chips;
 }

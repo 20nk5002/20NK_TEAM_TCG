@@ -26,7 +26,7 @@ public:
 
     Chip_4* chips;
     bool init( int n , int map_Number_ );
-    void update();
+    void update(); 
     void draw();
     void destroy();
 };
