@@ -48,7 +48,7 @@ int Game::update()
     clear.update( 0 );
     if(mesu_Position == osu_Position)
     {
-        clear.update( 255 );
+        clear.update( 1 );
        return 1;
     }
     if( mesu_Position == 10 || osu_Position == 10 )
