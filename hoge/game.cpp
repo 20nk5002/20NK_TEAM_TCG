@@ -1,5 +1,7 @@
 #include"DxLib.h"
 #include"game.h"
+#include"keys.h"
+
 
 
 bool Game::init( int map_Number_ )
@@ -12,11 +14,28 @@ bool Game::init( int map_Number_ )
 
 }
 int osumesuhit = 1;
+int handole = 0;
 bool Game::update()
 {
+    XINPUT_STATE xinput;
+    GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
+    const char* keys = Keyboard::getPressed();
+    if( xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || CheckHitKey( KEY_INPUT_DOWN ) == 1 )
+    {
+        if( handole == 0 )
+        {
+            handole = 1;
+        }
+        else
+            handole = 0;
+    }
     map.update();
-    player_Mesu.update();
-    player_Osu.update();
+    if(handole==0 ) {
+        player_Osu.update();
+    }
+    else {
+        player_Mesu.update();
+    }
     clear.update( osumesuhit );
     /* ì‚è•û‚ÌŠî”Õ—á
     mesu_Position = uplayer_Mesu.update();
