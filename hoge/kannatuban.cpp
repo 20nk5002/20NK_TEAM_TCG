@@ -12,8 +12,8 @@ bool Kannatu::init() {
 
 }
 
-
 bool Kannatu::update( int player_is_where_ ) {
+    return is_pressed_;
 
 }
 void Kannatu::draw() {
