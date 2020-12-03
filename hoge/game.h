@@ -17,8 +17,8 @@ private:
     Keyboard keboard;
    
 public:
-    bool init();
-    void update();
+    bool init(int map_Number_);
+    bool update();
     void draw();
     void destroy();
 };

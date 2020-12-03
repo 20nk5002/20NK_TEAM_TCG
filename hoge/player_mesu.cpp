@@ -12,14 +12,14 @@ Chip_::Chip_() {
 
 Player_Mesu::Player_Mesu() 
 {
-    init();
+   // init();
 }
 
 Player_Mesu::~Player_Mesu() 
 {
     destroy();
 }
-bool Player_Mesu::init()
+bool Player_Mesu::init( int map_Number_ )
 {
 
     FILE* fp;
@@ -27,7 +27,7 @@ bool Player_Mesu::init()
     // テクスチャの読み込み
 
     char file_name[ _MAX_PATH ];
-    sprintf( file_name, "stage%d.fmf", map_type_ );
+    sprintf( file_name, "stage%d.fmf", map_Number_ );
     //sprintf( file_name, "hako.fmf" );
     fp = fopen( file_name, "rb" );
 

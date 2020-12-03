@@ -22,7 +22,7 @@ public:
     Chip* chips;
     Map();
     ~Map();
-    bool init();
+    bool init( int map_Number_ );
     void update();
     void draw();
     void destroy();

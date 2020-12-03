@@ -2,23 +2,24 @@
 #include"game.h"
 
 
-bool Game::init() 
+bool Game::init( int map_Number_ )
 {
-    if( map.init() == false )return false;
-    if( player_Mesu.init() == false ) {
+    if( map.init( map_Number_ ) == false )return false;
+    if( player_Mesu.init( map_Number_ ) == false ) {
         return false;
     }
-    if( player_Osu.init() == false ) {
+    if( player_Osu.init( map_Number_ ) == false ) {
         return false;
     }
     return true;
 
 }
-void Game::update()
+bool Game::update()
 {
     map.update();
     player_Mesu.update();
     player_Osu.update();
+    return true;
 }
 void Game::draw()
 {
