@@ -84,7 +84,7 @@ bool Player_Osu::init()
 
     return true;
 }
-void Player_Osu::update()
+int Player_Osu::update()
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
@@ -127,11 +127,11 @@ void Player_Osu::update()
     //右移動
     if( f_ & 1 ) {
         if( x1_ + 64 != x_ ) {
-            x_ += 4;
+            x_ += 4; 
         }
         else {
             f_ -= 1;
-            x1_ = x_;
+            x1_ = x_; //is_where_を1加算
         }
     }
     //左移動
@@ -142,7 +142,7 @@ void Player_Osu::update()
         }
         else {
             f_ -= 2;
-            x1_ = x_;
+            x1_ = x_; //is_where_を1減算
         }
 
     }
@@ -153,11 +153,11 @@ void Player_Osu::update()
         }
         else {
             f_ -= 8;
-            y1_ = y_;
+            y1_ = y_; //is_where_を20減算
         }
     }
 
-
+    return is_where_;
 }
 void Player_Osu:: draw()
 {
