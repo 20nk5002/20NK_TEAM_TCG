@@ -107,13 +107,15 @@ int  Player_Mesu::update()
     }
     //左移動　フラグ　2
     else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
-        if( f_ != 0 ) {}
-        else if( f_ & 2 ) {
+        if( x_ != 0 ) {
+            if( f_ != 0 ) {}
+            else if( f_ & 2 ) {
 
-        }
-    
-        else {
-            f_ += 2;
+            }
+
+            else {
+                f_ += 2;
+            }
         }
     }
 
