@@ -5,6 +5,7 @@
 #include"title.h"
 #include"fade.h"
 #include"allstageclear.h"
+#include"gameover.h"
 
 // シーン管理列挙体
 enum
@@ -29,7 +30,8 @@ enum
     kFADE_UPDATE7,
     kFADE_UPDATE8,
     kFADE_UPDATE9,
-    kGAME_CLEAR
+    kGAME_CLEAR,
+    kGAME_OVER
 };
 
 
@@ -58,7 +60,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     Game game;
     Fade fade;
     Allclear allclear;
-    
+    Gameover gameover;
+    if( gameover.init() == false )
+    {
+        return 0;
+    }
 
     // 裏画面に描画
     SetDrawScreen( DX_SCREEN_BACK );
@@ -132,15 +138,17 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kGAME_UPDATE0:
             if( game.update() == false )
             {
-                work = kTITLE_INIT;
-                game.destroy();
-                continue;
+                work = kGAME_OVER;
+                //game.destroy();
             }break;
         case  kGAME_CLEAR:
             if( allclear.init() == false )
             {
                 return 0;
             }break;
+        case kGAME_OVER:
+            game.destroy();
+            break;
         }
 
         Keyboard::update();
@@ -165,8 +173,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE9:
         case kGAME_UPDATE0: game.draw(); break;
         case kGAME_CLEAR:allclear.draw(); break;
+        case kGAME_OVER:gameover.draw(); break;
         }
         fade.draw();
+       
         // 裏画面に描画した内容を表示
         ScreenFlip();
 
@@ -177,6 +187,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     // DXライブラリの破棄
     DxLib_End();
     game.destroy();
+    gameover.destroy();
 
     return 0;
 }

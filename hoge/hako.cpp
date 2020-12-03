@@ -6,10 +6,11 @@ Chip_4::Chip_4() {
 }
 
 Hako::Hako() {
-    texture = 0;
+    texture = -1;
     box_x = box_y = 0;
     is_where_ = 0;
     width_ = height_ = 0;
+    chips = NULL;
 }
 Hako::~Hako() {
 
@@ -93,6 +94,12 @@ void Hako::draw() {
     DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 1, 0, 0 ); //hako•`‰æ‚¤‚Ü‚­‚¢‚Á‚Ä‚È‚¢
 }
 void Hako::destroy() {
-    DeleteGraph( texture );
-    delete[] chips;
+    if( texture != -1 ) {
+        DeleteGraph( texture );
+        texture = -1;
+    }
+    if( chips != NULL ) {
+        delete[] chips;
+        chips = NULL;
+    }
 }

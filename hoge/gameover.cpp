@@ -4,7 +4,7 @@
 
 bool Gameover::init()
 {
-    transparent_ = 0;
+    transparent_ = 255;
     //テクスチャの読み込み
     if( (gameover_texture_ = LoadGraph( "gameover.png" )) == -1 ) {
         return false;

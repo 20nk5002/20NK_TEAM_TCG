@@ -6,6 +6,7 @@
 
 bool Game::init( int map_Number_ )
 {
+    game_over_ = 0;
     if( map.init( map_Number_ ) == false )return false;
     if( player_Mesu.init( map_Number_ ) == false )return false;
     if( player_Osu.init( map_Number_ ) == false )return false;
@@ -13,6 +14,8 @@ bool Game::init( int map_Number_ )
     for( int i = 0; i < 5; i++ ) {
         if( hako[ i ].init( i, map_Number_ ) == false )return false;
     }
+   // if( gameover.init() == false )return false;
+
     return true;
 
 }
@@ -47,18 +50,28 @@ bool Game::update()
     {
        return false;
     }
+    if( mesu_Position == 10 || osu_Position == 10 )
+    {
+        destroy();
+        game_over_ = 1;
+        return false;
+    }
     
     return true;
 }
 void Game::draw()
 {
-    map.draw();
-    player_Mesu.draw();
-    player_Osu.draw();
-    for( int i = 0; i < 5; i++ ) {
-        hako[ i ].draw();
+    if( game_over_ == 0 ) {
+        map.draw();
+        player_Mesu.draw();
+        player_Osu.draw();
+        for( int i = 0; i < 5; i++ ) {
+            hako[ i ].draw();
+        }
+        clear.draw();
     }
-    clear.draw();
+    else
+        gameover.draw();
 }
 void Game::destroy()
 {

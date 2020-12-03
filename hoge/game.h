@@ -8,17 +8,20 @@
 #include"hako.h"
 #include"keys.h"
 #include"clear.h"
+#include"gameover.h"
 
 //　ゲームクラス
 class Game
 {
 private:
+    int game_over_;
     Player_Mesu player_Mesu;
     Player_Osu player_Osu;
     Hako hako[ 6 ];
     Map map;
     Keyboard keboard;
     Clear clear;
+    Gameover gameover;
    
 public:
     bool init(int map_Number_);
