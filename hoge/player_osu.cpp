@@ -76,6 +76,7 @@ bool Player_Osu::init( int map_Number_ )
     x_ = x1_ = is_where_ % 20 * 64;
     y_ = y1_ = is_where_ / 20 * 64;
     f_ = 0;
+    fall_ = 0;
 
     if( (textur = LoadGraph( "karichip.png" )) == -1 ) {
 
@@ -90,6 +91,11 @@ int Player_Osu::update()
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getPressed();
+
+    if( (chips[ is_where_ ].id) != 2 && (chips[ is_where_ - 20 ].id) != 1 ) {
+        f_ = 8;
+        ++fall_;
+    }
 
     //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ]  )
@@ -167,6 +173,13 @@ int Player_Osu::update()
             is_where_ -= 20;
         }
     }
+    if( fall_ < 2 ) {
+        fall_ = 0;
+       // return 0;
+    }
+    else {
+        fall_ = 0;
+    }
 
     return is_where_;
 }
@@ -183,4 +196,6 @@ void Player_Osu::destroy()
         textur = 0;
 
     }
+    delete[]  chips;
+    chips = NULL;
 }
