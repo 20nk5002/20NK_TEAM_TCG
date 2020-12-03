@@ -9,7 +9,7 @@ public:
     ~Kannatu();
 
     bool init();
-    void update();
+    bool update( int player_is_where_ );
     void draw();
     void destroy();
 };
