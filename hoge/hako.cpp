@@ -8,12 +8,16 @@ Chip_4::Chip_4() {
 Hako::Hako() {
     texture = 0;
     box_x = box_y = 0;
+    is_where_ = 0;
+    width_ = height_ = 0;
 }
 Hako::~Hako() {
 
 }
 
-bool Hako::init( int n , int map_Number_ ) {
+bool Hako::init( const int n , int map_Number_ ) {
+    FILE* fp = 0;
+    int n2 = n;
 
     char file_name[ _MAX_PATH ];
     sprintf( file_name, "stage%d.fmf", map_Number_ );;
@@ -49,11 +53,11 @@ bool Hako::init( int n , int map_Number_ ) {
     {
         fread( &chips[ i ].id, sizeof( char ), 1, fp );
         if( chips[ i ].id == 9 ) {
-            if( n == 0 ) {
+            if( n2 == 0 ) {
                 is_where_ = i;
             }
             else {
-                n -= 1;
+                n2 -= 1;
             }
         }
 
@@ -79,7 +83,7 @@ void Hako::update() {
 
 }
 void Hako::draw() {
-    DrawRectGraph( box_x * 64, box_y * 64, 64 * 9, 0, 64, 64, texture, 0, 0, 0 );
+    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 0 );
 }
 void Hako::destroy() {
     delete[] chips;
