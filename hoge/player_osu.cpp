@@ -92,8 +92,8 @@ int Player_Osu::update()
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getPressed();
 
-    if( (chips[ is_where_ ].id) != 2 && (chips[ is_where_ - 20 ].id) != 1 ) {
-        f_ = 8;
+    if(  (chips[ is_where_ + 20 ].id) ==0 ) {
+        f_ = 16;
         ++fall_;
     }
 
@@ -173,11 +173,22 @@ int Player_Osu::update()
             is_where_ -= 20;
         }
     }
+    if( f_ & 16 ) {
+        if( y1_ + 64 != y_ ) {
+            y_ += 4;
+        }
+        else {
+            f_ -= 16;
+            y1_ = y_;
+            is_where_ = +20;
+        }
+    }
     if( fall_ < 2 ) {
         fall_ = 0;
        // return 0;
     }
     else {
+        if( (chips[ is_where_ + 20 ].id) == 0 )
         fall_ = 0;
     }
 
@@ -186,7 +197,7 @@ int Player_Osu::update()
 void Player_Osu:: draw()
 {
     DrawRectGraph( x_, y_, 10 * 64, 0, 64, 64, textur, 1 );
-    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, is_where_ );
+    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, f_);
 }
 void Player_Osu::destroy()
 {
