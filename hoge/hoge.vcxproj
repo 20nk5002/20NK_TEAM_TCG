@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="clear.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameover.cpp" />
     <ClCompile Include="hako.cpp" />
     <ClCompile Include="hasigo.cpp" />
     <ClCompile Include="kannatuban.cpp" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="fade.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="gameover.h" />
     <ClInclude Include="hako.h" />
     <ClInclude Include="hasigo.h" />
     <ClInclude Include="kannatuban.h" />
