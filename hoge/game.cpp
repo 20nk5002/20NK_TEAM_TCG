@@ -23,7 +23,7 @@ bool Game::update()
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getPressed();
-    if( xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || CheckHitKey( KEY_INPUT_DOWN ) == 1 )
+    if( xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || keys[KEY_INPUT_DOWN] )
     {
         if( handole == 0 )
         {
