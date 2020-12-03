@@ -10,7 +10,7 @@ bool Game::init( int map_Number_ )
     if( player_Mesu.init( map_Number_ ) == false )return false;
     if( player_Osu.init( map_Number_ ) == false )return false;
     if( clear.init() == false )return false;
-    for( int i = 0; i < 6; i++ ) {
+    for( int i = 0; i < 5; i++ ) {
         if( hako[ i ].init( i, map_Number_ ) == false )return false;
     }
     return true;
@@ -55,7 +55,7 @@ void Game::draw()
     map.draw();
     player_Mesu.draw();
     player_Osu.draw();
-    for( int i = 0; i < 6; i++ ) {
+    for( int i = 0; i < 5; i++ ) {
         hako[ i ].draw();
     }
     clear.draw();
@@ -65,5 +65,8 @@ void Game::destroy()
     map.destroy();
     player_Mesu.destroy();
     player_Osu.destroy();
+    for( int i = 0; i < 5; i++ ) {
+        hako[ i ].destroy();
+    }
     clear.destroy();
 }
