@@ -125,7 +125,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kGAME_UPDATE0:
             if( game.update() == false )
             {
-                work = kFADE_UPDATE2;
+                work = kTITLE_INIT;
+                game.destroy();
                 continue;
             }break;
         }

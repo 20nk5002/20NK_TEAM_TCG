@@ -6,6 +6,7 @@
 #include"player_mesu.h"
 #include"player_osu.h"
 #include"keys.h"
+#include"clear.h"
 
 //　ゲームクラス
 class Game
@@ -15,6 +16,7 @@ private:
     Player_Osu player_Osu;
     Map map;
     Keyboard keboard;
+    Clear clear;
    
 public:
     bool init(int map_Number_);
