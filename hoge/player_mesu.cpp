@@ -83,6 +83,7 @@ bool Player_Mesu::init( int map_Number_ )
 
         return false;
     }
+
     return true;
 }
 
@@ -118,12 +119,14 @@ int  Player_Mesu::update()
 
     //ãˆÚ“®@ƒtƒ‰ƒO4
     else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
-        if( f_ != 0 ) {}
-        else if( f_ & 8 ) {
+        if( (chips[is_where_].id)== 2 ) {
+            if( f_ != 0 ) {}
+            else if( f_ & 8 ) {
 
-        }
-        else {
-            f_ += 8;
+            }
+            else {
+                f_ += 8;
+            }
         }
     }
 
