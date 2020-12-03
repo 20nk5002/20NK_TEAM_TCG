@@ -34,7 +34,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 0;
+    int map_Number_ = 1;
 
     SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
 

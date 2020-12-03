@@ -9,7 +9,7 @@ Hako::~Hako() {
 
 }
 
-bool Hako::init( int n ) {
+bool Hako::init( int n , int map_Number_ ) {
 
     char file_name[ _MAX_PATH ];
     sprintf( file_name, "stage%d.fmf", map_Number_ );

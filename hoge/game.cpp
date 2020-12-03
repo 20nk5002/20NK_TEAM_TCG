@@ -10,6 +10,7 @@ bool Game::init( int map_Number_ )
     if( player_Mesu.init( map_Number_ ) == false )return false;
     if( player_Osu.init( map_Number_ ) == false )return false;
     if( clear.init() == false )return false;
+    if( hako->init( map_Number_ ) == false )return false;
     return true;
 
 }

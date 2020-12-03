@@ -7,7 +7,7 @@ private:
 	int transparent_;
 public:
 	bool init();
-	void update( int osu_Mesu_Hit_ );
+	void update();
 	void draw();
 	void destroy();
 

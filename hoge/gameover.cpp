@@ -6,19 +6,19 @@ bool Gameover::init()
 {
     transparent_ = 0;
     //テクスチャの読み込み
-    if( (gameover_texture_ = LoadGraph( "stageclear.png" )) == -1 ) {
+    if( (gameover_texture_ = LoadGraph( "gameover.png" )) == -1 ) {
         return false;
     }
     return true;
 }
-void Gameover::update( int osu_Mesu_Hit_ )
+void Gameover::update()
 {
-    if( osu_Mesu_Hit_ == 1 ) {
+  /*  if(　引数 == 1 ) {
         transparent_ = 255;
     }
     else {
         transparent_ = 0;
-    }
+    }*/
 }
 void Gameover::draw()
 {
