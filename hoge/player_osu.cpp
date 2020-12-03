@@ -198,7 +198,7 @@ int Player_Osu::update()
 }
 void Player_Osu:: draw()
 {
-    DrawRectGraph( x_, y_, 10 * 64, 0, 64, 64, textur, 1 );
+    DrawRectGraph( x_-4, y_, 10 * 64, 0, 64, 64, textur, 1 );
     DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, f_);
 }
 void Player_Osu::destroy()
