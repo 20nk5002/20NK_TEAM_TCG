@@ -9,7 +9,7 @@ Kannatu::~Kannatu() {
 }
 
 bool Kannatu::init() {
-
+    return true;
 }
 
 bool Kannatu::update( int player_is_where_ ) {
