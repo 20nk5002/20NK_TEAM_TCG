@@ -157,6 +157,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE7:
         case kFADE_UPDATE9:
         case kGAME_UPDATE0: game.draw(); break;
+        case kGAME_CLEAR:
         }
         fade.draw();
         // — ‰æ–Ê‚É•`‰æ‚µ‚½“à—e‚ð•\Ž¦
