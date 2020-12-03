@@ -116,13 +116,16 @@ int Player_Osu::update()
 
     //上移動　フラグ4
     else  if( CheckHitKey( KEY_INPUT_UP ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
-        if( f_ != 0 ) {}
-        else if( f_ & 8 ) {
+        if( (chips[ is_where_ ].id) == 2 ) {
+            if( f_ != 0 ) {}
+            else if( f_ & 8 ) {
 
+            }
+            else {
+                f_ += 8;
+            }
         }
-        else {
-            f_ += 8;
-        }
+       
     }
 
     //右移動
@@ -133,7 +136,7 @@ int Player_Osu::update()
         else {
             f_ -= 1;
             x1_ = x_; 
-            is_where_ =+ 1;
+            is_where_ += 1;
         }
     }
     //左移動
@@ -166,7 +169,7 @@ int Player_Osu::update()
 void Player_Osu:: draw()
 {
     DrawRectGraph( x_, y_, 10 * 64, 0, 64, 64, textur, 1 );
-    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, f_ );
+    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, is_where_ );
 }
 void Player_Osu::destroy()
 {
