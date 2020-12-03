@@ -94,23 +94,27 @@ int Player_Osu::update()
     //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ]  )
     {
-        if(f_!=0 ){}
-        else if( f_ & 1 ) {
+       
+            if( f_ != 0 ) {}
+            else if( f_ & 1 ) {
 
-        }
-        else {
-            f_ += 1;
-        }
+            }
+            else {
+                f_ += 1;
+            }
     }
     //左移動　フラグ　2
     else  if( CheckHitKey( KEY_INPUT_LEFT ) == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
-        if( f_ != 0 ) {}
-        else if( f_ & 2 ) {
 
-        }
+        if( x_ != 0 ) {
+            if( f_ != 0 ) {}
+            else if( f_ & 2 ) {
 
-        else {
-            f_ += 2;
+            }
+
+            else {
+                f_ += 2;
+            }
         }
     }
 
