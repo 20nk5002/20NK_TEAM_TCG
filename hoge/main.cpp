@@ -34,6 +34,8 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
+    int map_Number_ = 0;
+
     SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
 
     // DXライブラリの事前設定
@@ -49,15 +51,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         return 0;
     }
 
+    // シーンの作成
     Title title;
     Game game;
     Fade fade;
-
-    if( game.init() == -1 )
-    {
-        return 0;
-    }
-
 
     // 裏画面に描画
     SetDrawScreen( DX_SCREEN_BACK );
@@ -112,16 +109,24 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 continue;
             }break;
         case kGAME_INIT0:
-            if( game.init() == false )
+            if( game.init( map_Number_ ) == false )
             {
                 return 0;
             }
+            map_Number_++;
             work = kFADE_UPDATE1;
             break;
         case kFADE_UPDATE1:
             if( fade.update() <= 0 )
             {
                 work = kGAME_UPDATE0;
+                continue;
+            }break;
+        case kGAME_UPDATE0:
+            if( game.update() == false )
+            {
+                work = kTITLE_INIT;
+                game.destroy();
                 continue;
             }break;
         }

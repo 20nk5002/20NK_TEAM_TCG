@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="clear.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hako.cpp" />
     <ClCompile Include="hasigo.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="player_mesu.h" />
     <ClInclude Include="player_osu.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="clear.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

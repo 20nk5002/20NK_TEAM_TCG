@@ -24,8 +24,8 @@ public:
     Chip_3* chips;
     Player_Osu();
     ~Player_Osu();
-    bool init();
-    int update();
+    bool init( int map_Number_ );
+    void update();
     void draw();
     void destroy();
 
