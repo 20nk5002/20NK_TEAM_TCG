@@ -88,7 +88,7 @@ bool Player_Mesu::init( int map_Number_ )
     return true;
 }
 
-int  Player_Mesu::update()
+int  Player_Mesu::update( bool handle )
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
@@ -105,7 +105,7 @@ int  Player_Mesu::update()
     }
 
     //右移動　フラグ　1
-    if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] )
+    if( (keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ]) * handle )
     {
         if( x_ != 1216 ) {
             if( f_ != 0 ) {}
@@ -119,7 +119,7 @@ int  Player_Mesu::update()
         }
     }
     //左移動　フラグ　2
-    else  if( keys[ KEY_INPUT_LEFT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
+    else  if( (keys[ KEY_INPUT_LEFT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] /*&& f_ == 0*/) * handle ) {
 
         if( x_ != 0 ) {
             if( f_ != 0 ) {}
@@ -135,7 +135,7 @@ int  Player_Mesu::update()
     }
 
     //上移動　フラグ4
-    else  if( keys[ KEY_INPUT_UP ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] && f_ == 0 ) {
+    else  if( (keys[ KEY_INPUT_UP ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] /*&& f_ == 0*/) * handle ) {
         if( (chips[ is_where_ ].id) == 2|| (chips[ is_where_ ].id) == 5||(chips[ is_where_ ].id) == 8 ) {
             if( f_ != 0 ) {}
             else if( f_ & 8 ) {

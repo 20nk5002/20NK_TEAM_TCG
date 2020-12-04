@@ -26,7 +26,7 @@ public:
     Player_Osu();
     ~Player_Osu();
     bool init( int map_Number_ );
-    int update();
+    int update( bool handle );
     void draw();
     void destroy();
 
