@@ -107,14 +107,15 @@ int  Player_Mesu::update()
     //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ] )
     {
+        if( x_ != 1216 ) {
+            if( f_ != 0 ) {}
+            else if( (chips[ is_where_ + 1 ].id) == 1 ) {}
+            else if( f_ & 1 ) {
 
-        if( f_ != 0 ) {}
-        else if( (chips[ is_where_ + 1 ].id) == 1 ) {}
-        else if( f_ & 1 ) {
-
-        }
-        else {
-            f_ += 1;
+            }
+            else {
+                f_ += 1;
+            }
         }
     }
     //左移動　フラグ　2
@@ -204,7 +205,7 @@ int  Player_Mesu::update()
 void  Player_Mesu::draw()
 {
     DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 1 );
-    DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, f_ );
+    DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, x_ );
     }
 void  Player_Mesu::destroy()
 {
