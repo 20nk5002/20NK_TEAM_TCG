@@ -33,7 +33,7 @@ bool Map::init( int map_Number_ )
     {
         return false;
     }
-    if( (sound_ = LoadSoundMem( "map/wav" ) == -1) ) {
+    if( (sound_ = LoadSoundMem( "map.wav" ) == -1) ) {
         return false;
     }
 

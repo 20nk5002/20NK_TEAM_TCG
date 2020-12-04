@@ -12,6 +12,7 @@ Chip_3::Chip_3() {
 Player_Osu::Player_Osu()
 {
    // init();
+    chips = NULL;
 }
 
 Player_Osu::~Player_Osu()
