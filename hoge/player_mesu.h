@@ -20,7 +20,9 @@ private:
     int map_type_ = 0;
     int is_where_ = 0;
     int fall_;
-
+    int sin_hako_[ 6 ];
+    int n2 = 0;
+    int j = 0;
 
 public:
     Chip_* chips;

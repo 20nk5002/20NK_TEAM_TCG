@@ -85,12 +85,35 @@ bool Player_Mesu::init( int map_Number_ )
 
         return false;
     }
+    for( int i = 0; i < width_ * height_; i++ )
+    {
+        fread( &chips[ i ].id, sizeof( char ), 1, fp );
+        if( chips[ i ].id == 9 ) {
+            if( n2 == 0 ) {
+               sin_hako_[j++] = i;
+                n2 -= 1;
+            }
+            else {
+                n2 -= 1;
+            }
+        }
+
+       
+    }
+   
 
     return true;
 }
 
 int  Player_Mesu::update( bool handle, int hako_is[] )
 {
+    
+    for( int i = 0; i < 6; i++ ) {
+
+        (chips[ sin_hako_[ i ] ].id) = 0;
+        sin_hako_[ i ] = hako_is[ i ];
+       
+    }
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );

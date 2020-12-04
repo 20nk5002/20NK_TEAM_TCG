@@ -85,6 +85,7 @@ bool Hako::init( const int n , int map_Number_ ) {
     // ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
     fclose( fp );
     f_ = 0;
+    
     return true;
 }
 int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held ) {
