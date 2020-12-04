@@ -24,6 +24,7 @@ bool Kannatu_Ao::update( int osu_is_where_, int mesu_is_where_, int hako_is_wher
     else {
         is_pressed_ = false;
     }
+    return is_pressed_;
 }
 void Kannatu_Ao::draw() {
 
