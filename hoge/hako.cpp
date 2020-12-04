@@ -8,7 +8,7 @@ Chip_4::Chip_4() {
 Hako::Hako() {
     texture = -1;
     box_x = box_y = 0;
-    is_where_ = 0;
+    is_where_ = -1;
     width_ = height_ = 0;
     chips = NULL;
 }
@@ -62,10 +62,7 @@ bool Hako::init( const int n , int map_Number_ ) {
         if( chips[ i ].id == 9 ) {
             if( n2 == 0 ) {
                 is_where_ = i;
-                box_x = is_where_ % 20 * 64;
-                box_y = is_where_ / 20 * 64;
-                fclose( fp );
-                return true;
+                n2 -= 1;
             }
             else {
                 n2 -= 1;
@@ -78,10 +75,13 @@ bool Hako::init( const int n , int map_Number_ ) {
                // 座標の設定
                chips[ i ].x_ = 64 * (i % width_);
                chips[ i ].y_ = 64 * (i / width_);*/
+
     }
-    is_where_ = -1;
+    box_x = is_where_ % 20 * 64;
+    box_y = is_where_ / 20 * 64;
     box_x1 = box_x = is_where_ % 20 * 64;
     box_y1 = box_y = is_where_ / 20 * 64;
+
     // ファイルを閉じる
     fclose( fp );
     f_ = 0;
