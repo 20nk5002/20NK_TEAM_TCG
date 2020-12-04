@@ -39,7 +39,7 @@ int Game::update()
         else
             handle_ = true;
     }
-    map.update();
+   
     osu_Position = player_Osu.update( !handle_, hako_is_where_ );
     mesu_Position = player_Mesu.update( handle_,hako_is_where_ );
     for( int i = 0; i < 5; i++ ) {
@@ -48,12 +48,15 @@ int Game::update()
     clear.update( 0 );
     if(mesu_Position == osu_Position)
     {
+        map.update();
         if( clear.init() == false )return false;
         clear.update( 1 );
        return 1;
     }
     if( mesu_Position == -1 || osu_Position == -1 )
     {
+       
+        map.update();
         destroy();
         game_over_ = 1;
         return 2;

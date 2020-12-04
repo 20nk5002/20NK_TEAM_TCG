@@ -30,6 +30,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     int map_Number_ = 1;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
+    int no_again = 0;
 
     SetOutApplicationLogValidFlag( false );//ログファイルを出力しない
 
@@ -130,6 +131,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE1:
             if( fade.update() <= 0 )
             {
+                clear.destroy();
                 work = kGAME_UPDATE;
                 continue;
             }break;
@@ -154,7 +156,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 return 0;
             }break;
         case kGAME_OVER:
-            gameover.init();
+            if( no_again == 0 ) {
+                gameover.init();
+                no_again = 1;
+            }
+
             if (check_Botan_ == 1)
             {
                 DxLib_End();
