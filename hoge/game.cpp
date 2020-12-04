@@ -39,7 +39,7 @@ int Game::update()
         else
             handle_ = true;
     }
-   
+  
     osu_Position = player_Osu.update( !handle_, hako_is_where_ );
     mesu_Position = player_Mesu.update( handle_,hako_is_where_ );
     for( int i = 0; i < 5; i++ ) {

@@ -98,6 +98,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             check_Botan_ = 0;
 
 
+        clear.update(0);
+
         switch( work )
         {
         case kTITLE_INIT:  // タイトル初期化
@@ -110,6 +112,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kTITLE_UPDATE:
             if( title.update() == false )
             {
+                clear.destroy();
                 work = kFADE_UPDATE0;
                 continue;
             }break;
@@ -131,7 +134,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE1:
             if( fade.update() <= 0 )
             {
-                clear.destroy();
                 work = kGAME_UPDATE;
                 continue;
             }break;
@@ -211,7 +213,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kGAME_CLEAR:allclear.draw(); break;
         case kGAME_OVER:gameover.draw(); break;
         }
-        clear.draw();
         fade.draw();
        
         // 裏画面に描画した内容を表示

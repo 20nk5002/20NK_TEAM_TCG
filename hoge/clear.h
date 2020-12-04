@@ -7,6 +7,7 @@ private:
 	int transparent_;
 	int sound_;//ミュージックハンドル
 public:
+	Clear();
 	bool init();
 	void update( int osu_Mesu_Hit_ );
 	void draw();

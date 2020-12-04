@@ -2,6 +2,11 @@
 #include"DxLib.h"
 #include"clear.h"
 
+Clear::Clear()
+{
+    transparent_ = 0;
+}
+
 bool Clear::init()
 {
     transparent_ = 0;
@@ -17,8 +22,9 @@ bool Clear::init()
 }
 void Clear::update( int osu_Mesu_Hit_ )
 {
+    transparent_ = osu_Mesu_Hit_;
    
-    if( osu_Mesu_Hit_ == 1 ) {
+    if( transparent_ == 1 ) {
         transparent_ = 255;
     }
     else {
