@@ -104,15 +104,16 @@ int Player_Osu::update()
     //右移動　フラグ　1
     if( keys[ KEY_INPUT_RIGHT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_RIGHT ]  )
     {
-       
+        if( x_ != 1216 ) {
             if( f_ != 0 ) {}
-            else if( (chips[ is_where_ + 1 ].id) == 1 ){}
+            else if( (chips[ is_where_ + 1 ].id) == 1 ) {}
             else if( f_ & 1 ) {
 
             }
             else {
                 f_ += 1;
             }
+        }
     }
     //左移動　フラグ　2
     else  if( keys[ KEY_INPUT_LEFT ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_LEFT ] && f_ == 0 ) {
