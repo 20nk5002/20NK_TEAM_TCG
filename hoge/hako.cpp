@@ -80,19 +80,52 @@ bool Hako::init( const int n , int map_Number_ ) {
                chips[ i ].y_ = 64 * (i / width_);*/
     }
     is_where_ = -1;
-    box_x = is_where_ % 20 * 64;
-    box_y = is_where_ / 20 * 64;
+    box_x1 = box_x = is_where_ % 20 * 64;
+    box_y1 = box_y = is_where_ / 20 * 64;
     // ファイルを閉じる
     fclose( fp );
-
+    f_ = 0;
     return true;
 }
 int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held ) {
+    
+    if( (chips[ is_where_ + 20 ].id) == 0 ) {
+        f_ = 16;
+
+    }
+    if( f_ & 16 ) {
+        if( box_y1 + 64 != box_y ) {
+            box_y += 4;
+        }
+        else {
+            f_ -= 16;
+            box_y1 = box_y;
+            is_where_ += 20;
+        }
+    }
+    //プレイヤーの位置
     int handling_character_is_where_ = (osu_is_where_ * (!handle)) + (mesu_is_where_ * handle);
+    if( space_or_A_held == 1 ) {
+
+        if( handling_character_is_where_ - 1 == is_where_ ) {
+            box_x -= 64;
+            is_where_ -= 1;
+        }
+        if( handling_character_is_where_ + 1 == is_where_ ) {
+            box_x += 64;
+            is_where_ += 1;
+        }
+    }
+   
+   
+    
     return is_where_;
 }
 void Hako::draw() {
+    
     DrawRectGraph( box_x, box_y, 9 * 64, 0, 64, 64, texture, 0, 0, 0 );
+    DrawFormatString( box_x, box_y, GetColor( 255, 255, 255 ), ":%d:%d", (chips[ is_where_ + 20 ].id), (chips[ is_where_ ].id) );
+
 }
 void Hako::destroy() {
     if( texture != -1 ) {

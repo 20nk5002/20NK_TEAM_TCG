@@ -56,6 +56,7 @@ int Game::update()
         game_over_ = 1;
         return 2;
     }
+   
     
     return 0;
 }
