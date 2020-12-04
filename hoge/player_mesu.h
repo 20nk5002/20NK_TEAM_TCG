@@ -27,7 +27,7 @@ public:
     Player_Mesu();
     ~Player_Mesu();
     bool init( int map_Number_ );
-    int update( bool handle );
+    int update( bool handle ,int hako_is[]);
     void draw();
     void destroy();
 

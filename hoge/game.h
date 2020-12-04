@@ -14,6 +14,8 @@
 class Game
 {
 private:
+    int hako_is_where_[6];
+    int sin_hako_is_where_[ 6 ];
     int game_over_;
     bool handle_;
     Player_Mesu player_Mesu;
