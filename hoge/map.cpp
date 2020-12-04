@@ -32,6 +32,9 @@ bool Map::init( int map_Number_ )
     {
         return false;
     }
+    if( (sound_ = LoadSoundMem( "map/wav" ) == -1) ) {
+        return false;
+    }
 
     char file_name[ _MAX_PATH ];
     sprintf( file_name, "stage%d.fmf", map_type_ );
@@ -86,11 +89,12 @@ bool Map::init( int map_Number_ )
 
 void Map::update()
 {
-   
+    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
 }
 
 void Map::draw()
 {
+
     for( int i = 0; i < width_ * height_; i++ )
     {
         // 全チップの描画
@@ -114,5 +118,8 @@ void Map::destroy()
     if( chips != NULL ) {
         delete[] chips;
         chips = NULL;
+    }
+    if( sound_ != 0 ) {
+        DeleteSoundMem( sound_ );
     }
 }

@@ -9,10 +9,15 @@ bool Gameover::init()
     if( (gameover_texture_ = LoadGraph( "gameover.png" )) == -1 ) {
         return false;
     }
+    if( (sound_ = LoadSoundMem( "gameover.wav" ) == -1) ) {
+        return false;
+    }
     return true;
 }
 void Gameover::update()
 {
+
+    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
   /*  if(Å@à¯êî == 1 ) {
         transparent_ = 255;
     }
@@ -35,4 +40,8 @@ void Gameover::destroy()
         gameover_texture_ = 0;
 
     }
+    if(sound_ != 0) {
+        DeleteSoundMem( sound_ );
+    }
+
 }
