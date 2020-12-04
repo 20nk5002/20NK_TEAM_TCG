@@ -21,7 +21,7 @@ bool Hako::init( const int n , int map_Number_ ) {
     int n2 = n;
 
 
-    if( texture = LoadGraph( "karichip.png" ) == -1 ) {
+    if( (texture = LoadGraph( "karichip.png" )) == -1 ) {
         return false;
     }
 
@@ -91,7 +91,7 @@ void Hako::update() {
 
 }
 void Hako::draw() {
-    DrawRectGraph( box_x, box_y, 64 * 9, 0, 64, 64, texture, 1, 0, 0 ); //hako•`‰æ‚¤‚Ü‚­‚¢‚Á‚Ä‚È‚¢
+    DrawRectGraph( box_x, box_y, 9 * 64, 0, 64, 64, texture, 0, 0, 0 );
 }
 void Hako::destroy() {
     if( texture != -1 ) {
