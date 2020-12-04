@@ -99,21 +99,28 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
         }
         else {
             f_ -= 16;
+            chips[ is_where_ ].id = 0;
             box_y1 = box_y;
             is_where_ += 20;
+            chips[ is_where_ ].id = 9;
+            
         }
     }
     //プレイヤーの位置
     int handling_character_is_where_ = (osu_is_where_ * (!handle)) + (mesu_is_where_ * handle);
     if( space_or_A_held == 1 ) {
-
+ if( handling_character_is_where_ + 1 != 1 ) {
         if( handling_character_is_where_ - 1 == is_where_ ) {
-            box_x -= 64;
-            is_where_ -= 1;
+           
+                box_x -= 64;
+                is_where_ -= 1;
+            }
         }
         if( handling_character_is_where_ + 1 == is_where_ ) {
-            box_x += 64;
-            is_where_ += 1;
+            if( handling_character_is_where_ + 1 != 1 ) {
+                box_x += 64;
+                is_where_ += 1;
+            }
         }
     }
    

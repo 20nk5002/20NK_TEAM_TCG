@@ -89,7 +89,7 @@ bool Player_Mesu::init( int map_Number_ )
     return true;
 }
 
-int  Player_Mesu::update( bool handle )
+int  Player_Mesu::update( bool handle, int hako_is[] )
 {
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
