@@ -20,6 +20,7 @@ Player_Osu::~Player_Osu()
 }
 bool Player_Osu::init( int map_Number_ )
 {
+    //chips = NULL;
     FILE* fp;
 
     // テクスチャの読み込み
@@ -210,6 +211,8 @@ void Player_Osu::destroy()
         textur = 0;
 
     }
-    delete[]  chips;
-    chips = NULL;
+    if( chips != NULL ) {
+        delete[] chips;
+        chips = NULL;
+    }
 }
