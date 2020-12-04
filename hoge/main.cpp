@@ -26,7 +26,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 0;
+    int map_Number_ = 1;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
 
@@ -71,9 +71,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     // çÏã∆î‘çÜêî
     int work = kTITLE_INIT;
 
-    XINPUT_STATE xinput;
-    GetJoypadXInputState(DX_INPUT_PAD1, &xinput);
-
     // ÉÅÉCÉìÉãÅ[Év
     while( ProcessMessage() != -1 )
     {
@@ -94,8 +91,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
         }
 
-        const char* keys = Keyboard::getPressed();
-        if (xinput.Buttons[XINPUT_BUTTON_A] == 1 || keys[KEY_INPUT_SPACE])
+    XINPUT_STATE xinput;
+    GetJoypadXInputState(DX_INPUT_PAD1, &xinput);
+
+        const char* keys = Keyboard::getReleased();
+        if ( keys[KEY_INPUT_SPACE] || xinput.Buttons[ XINPUT_BUTTON_A ] == 1 )
         {
             check_Botan_ = 1;
         }
@@ -129,7 +129,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             {
                 return 0;
             }
-            map_Number_++;
+           
             work = kFADE_UPDATE1;
             break;
         case kFADE_UPDATE1:
@@ -175,6 +175,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                     work = kGAME_CLEAR;
                 }
                 else {
+                    map_Number_++;
                     work = kTITLE_INIT;
 
                 }
