@@ -7,7 +7,6 @@ private:
     int texrure_;//グラフハンドル
     int sound_;//ミュージックハンドル
 public:
-    Title();
     ~Title();
 
     bool init();

@@ -27,7 +27,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 3;
+    int map_Number_ = 1;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
 
@@ -52,15 +52,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     Fade fade;
     Allclear allclear;
     Clear clear;
-    if( clear.init() == false )
-    {
-        return 0;
-    }
     Gameover gameover;
-    if( gameover.init() == false )
-    {
-        return 0;
-    }
+   
 
     // — ‰æ–Ê‚É•`‰æ
     SetDrawScreen( DX_SCREEN_BACK );
@@ -122,6 +115,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE0:
             if( fade.update() >= 255 )
             {
+                title.desrroy();
                 work = kGAME_INIT;
                 continue;
             }break;
@@ -160,7 +154,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 return 0;
             }break;
         case kGAME_OVER:
-          
+            gameover.init();
             if (check_Botan_ == 1)
             {
                 DxLib_End();

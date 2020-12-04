@@ -12,6 +12,8 @@ Chip::Chip()
 Map::Map()
 {
    // init();
+    chips = NULL;
+
 }
 
 Map::~Map()
@@ -24,7 +26,6 @@ bool Map::init( int map_Number_ )
     map_texture_ = 0;
     width_ = height_ = 0;
     map_type_ = map_Number_;
-    chips = NULL;
 
     FILE* fp;
 
@@ -33,7 +34,7 @@ bool Map::init( int map_Number_ )
     {
         return false;
     }
-    if( (sound_ = LoadSoundMem( "map.wav" ) == -1) ) {
+    if( (sound_ = LoadSoundMem( "map.wav" )) == -1 ) {
         return false;
     }
 
@@ -84,13 +85,13 @@ bool Map::init( int map_Number_ )
     // ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
     fclose( fp );
 
+    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
     return true;
 
 }
 
 void Map::update()
 {
-    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
 }
 
 void Map::draw()

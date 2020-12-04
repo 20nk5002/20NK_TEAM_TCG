@@ -9,15 +9,16 @@ bool Gameover::init()
     if( (gameover_texture_ = LoadGraph( "gameover.png" )) == -1 ) {
         return false;
     }
-    if( (sound_ = LoadSoundMem( "gameover.wav" ) == -1) ) {
+    if( (sound_ = LoadSoundMem( "gameover.wav" )) == -1 ) {
         return false;
     }
+    PlaySoundMem( sound_, DX_PLAYTYPE_BACK );
+
     return true;
 }
 void Gameover::update()
 {
 
-    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
   /*  if(Å@à¯êî == 1 ) {
         transparent_ = 255;
     }

@@ -9,14 +9,15 @@ bool Clear::init()
     if( (clear_texture_ = LoadGraph( "stageclear.png" )) == -1 ) {
         return false;
     }
-    if( (sound_ = LoadSoundMem( "clear.wav" ) == -1) ) {
+    if( (sound_ = LoadSoundMem( "clear.wav" )) == -1 ) {
         return false;
     }
+    PlaySoundMem( sound_, DX_PLAYTYPE_BACK );
     return true;
 }
 void Clear::update( int osu_Mesu_Hit_ )
 {
-    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
+   
     if( osu_Mesu_Hit_ == 1 ) {
         transparent_ = 255;
     }

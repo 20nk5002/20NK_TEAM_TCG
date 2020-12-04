@@ -2,10 +2,6 @@
 #include"title.h"
 #include"keys.h"
 
-
-Title::Title() {
-    init();
-}
 Title::~Title() {
     desrroy();
 }
@@ -15,17 +11,17 @@ bool Title::init()
     if( (texrure_ = LoadGraph( "title.png" )) == -1 ) {
         return false;
     }
-    if( (sound_ = LoadSoundMem( "title.wav" ) == -1)) {
+    if( (sound_ = LoadSoundMem( "title.wav" )) == -1) {
         return false;
     }
 
+    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
     return true;
 }
 bool Title::update()
 {
-    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
-
-
+  
+    
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
@@ -33,6 +29,10 @@ bool Title::update()
     const char* keys = Keyboard::getPressed();
     //スペースキーが押されたらタイトル終了
     if( keys[ KEY_INPUT_SPACE ] || xinput.Buttons[ XINPUT_BUTTON_A ] == 1 ) {
+        if( CheckSoundMem( sound_ ) == 1 )
+        {
+            StopSoundMem( sound_ );
+        }
         return false;
     }
     return true;
@@ -43,6 +43,7 @@ void Title::draw()
 }
 void Title::desrroy()
 {
+   
     if( texrure_ != 0 ) {
         DeleteGraph( texrure_ );
         texrure_ = 0;
