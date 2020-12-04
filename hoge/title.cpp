@@ -15,11 +15,17 @@ bool Title::init()
     if( (texrure_ = LoadGraph( "title.png" )) == -1 ) {
         return false;
     }
+    if( (sound_ = LoadSoundMem( "title.wav" ) == -1)) {
+        return false;
+    }
 
     return true;
 }
 bool Title::update()
 {
+    PlaySoundMem( sound_, DX_PLAYTYPE_LOOP );
+
+
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
@@ -41,6 +47,9 @@ void Title::desrroy()
         DeleteGraph( texrure_ );
         texrure_ = 0;
 
+    }
+    if( sound_ != 0 ) {
+        DeleteSoundMem( sound_ );
     }
 
 }

@@ -18,6 +18,7 @@ private:
     int map_texture_;
     int width_, height_;
     int map_type_;
+    int sound_;//ミュージックハンドル
 public:
     Chip* chips;
     Map();
