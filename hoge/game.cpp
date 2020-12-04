@@ -39,8 +39,8 @@ int Game::update()
             handle = true;
     }
     map.update();
-    osu_Position = player_Osu.update( handle );
-    mesu_Position = player_Mesu.update( !handle );
+    osu_Position = player_Osu.update( !handle );
+    mesu_Position = player_Mesu.update( handle );
     clear.update( 0 );
     if(mesu_Position == osu_Position)
     {

@@ -111,6 +111,8 @@ void Map::destroy()
     }
 
     // チップ構造体のメモリを解放
-    delete[] chips;
-    chips = NULL;
+    if( chips != NULL ) {
+        delete[] chips;
+        chips = NULL;
+    }
 }

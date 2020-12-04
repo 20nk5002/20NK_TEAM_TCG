@@ -95,7 +95,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     GetJoypadXInputState(DX_INPUT_PAD1, &xinput);
 
         const char* keys = Keyboard::getReleased();
-        if ( keys[KEY_INPUT_SPACE] || xinput.Buttons[ XINPUT_BUTTON_A ] == 1 )
+        if ( xinput.Buttons[ XINPUT_BUTTON_A ] == 1  || keys[KEY_INPUT_SPACE])
         {
             check_Botan_ = 1;
         }
