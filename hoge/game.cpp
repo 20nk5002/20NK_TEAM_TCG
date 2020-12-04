@@ -41,6 +41,9 @@ int Game::update()
     map.update();
     osu_Position = player_Osu.update( !handle );
     mesu_Position = player_Mesu.update( handle );
+    for( int i = 0; i < 5; i++ ) {
+        hako[ i ].update( osu_Position, mesu_Position, handle, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
+    }
     clear.update( 0 );
     if(mesu_Position == osu_Position)
     {
@@ -60,11 +63,11 @@ void Game::draw()
 {
     if( game_over_ == 0 ) {
         map.draw();
-        player_Mesu.draw();
-        player_Osu.draw();
         for( int i = 0; i < 5; i++ ) {
             hako[ i ].draw();
         }
+        player_Mesu.draw();
+        player_Osu.draw();
         clear.draw();
     }
     else

@@ -87,8 +87,9 @@ bool Hako::init( const int n , int map_Number_ ) {
 
     return true;
 }
-void Hako::update() {
-
+int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held ) {
+    int handling_character_is_where_ = (osu_is_where_ * (!handle)) + (mesu_is_where_ * handle);
+    return is_where_;
 }
 void Hako::draw() {
     DrawRectGraph( box_x, box_y, 9 * 64, 0, 64, 64, texture, 0, 0, 0 );
