@@ -1,24 +1,25 @@
+#include"DxLib.h"
 #include"kannatuban_aka.h"
 
-Kannatu::Kannatu() {
+Kannatu_Aka::Kannatu_Aka() {
     is_pressed_ = false;
     kannatu_x_ = kannatu_y_ = 0;
 }
-Kannatu::~Kannatu() {
+Kannatu_Aka::~Kannatu_Aka() {
 
 }
 
-bool Kannatu::init() {
+bool Kannatu_Aka::init( int map_Number_ ) {
     return true;
 }
 
-bool Kannatu::update( int player_is_where_ ) {
+bool Kannatu_Aka::update( int player_is_where_ ) {
     return is_pressed_;
 
 }
-void Kannatu::draw() {
+void Kannatu_Aka::draw() {
 
 }
-void Kannatu::destroy() {
+void Kannatu_Aka::destroy() {
 
 }

@@ -1,14 +1,27 @@
 #pragma once
 
-class Kannatu {
+struct Chip_
+{
+    int x_, y_;
+    int trim_x_, trim_y_;
+    int id;
+
+    // コンストラクタ
+    Chip_();
+};
+
+class Kannatu_Aka {
 private:
     bool is_pressed_ = false;
     int kannatu_x_, kannatu_y_;
+    int width_ = 0; int height_ = 0;
+   
 public:
-    Kannatu();
-    ~Kannatu();
+    Chip_* chips;
+    Kannatu_Aka();
+    ~Kannatu_Aka();
 
-    bool init();
+    bool init( int map_Number_ );
     bool update( int player_is_where_ );
     void draw();
     void destroy();

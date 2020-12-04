@@ -1,13 +1,18 @@
 #pragma once
-class Kannatu {
+
+
+class Kannatu_Ao {
 private:
     bool is_pressed_ = false;
     int kannatu_x_, kannatu_y_;
+   
+   
 public:
-    Kannatu();
-    ~Kannatu();
+  
+    Kannatu_Ao();
+    ~Kannatu_Ao();
 
-    bool init();
+    bool init( int map_Number_ );
     bool update( int player_is_where_ );
     void draw();
     void destroy();
