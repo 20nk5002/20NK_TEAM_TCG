@@ -27,7 +27,7 @@ public:
     Player_Mesu();
     ~Player_Mesu();
     bool init( int map_Number_ );
-    int update();
+    int update( bool handle );
     void draw();
     void destroy();
 

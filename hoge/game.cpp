@@ -20,7 +20,7 @@ bool Game::init( int map_Number_ )
 
 }
 
-int handole = 0;
+bool handle = 0;
 int mesu_Position;
 int osu_Position;
 
@@ -31,20 +31,16 @@ int Game::update()
     const char* keys = Keyboard::getPressed();
     if( xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || keys[KEY_INPUT_DOWN] )
     {
-        if( handole == 0 )
+        if( handle )
         {
-            handole = 1;
+            handle = false;
         }
         else
-            handole = 0;
+            handle = true;
     }
     map.update();
-    if(handole==0 ) {
-         osu_Position = player_Osu.update();
-    }
-    else {
-         mesu_Position = player_Mesu.update();
-    }
+    osu_Position = player_Osu.update( handle );
+    mesu_Position = player_Mesu.update( !handle );
     clear.update( 0 );
     if(mesu_Position == osu_Position)
     {
