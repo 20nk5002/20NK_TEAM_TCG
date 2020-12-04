@@ -140,7 +140,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 continue;
             }break;
         case kGAME_UPDATE:
-            if( xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] )
+            if( xinput.Buttons[ XINPUT_BUTTON_A ] == 1&& xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || keys[ KEY_INPUT_SPACE ]&& keys[ KEY_INPUT_DOWN ] )
             {
                 work = kFADE_UPDATE2;
                 continue;
@@ -149,12 +149,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             if( scene_Change_ == 1 )
             {
                 work = kSTOP_SCENE;
-                //game.destroy();
             }
             else if( scene_Change_ == 2 )
             {
                 work = kGAME_OVER;
-                //game.destroy();
             }break;
         case  kGAME_CLEAR:
             if( allclear.init() == false )
