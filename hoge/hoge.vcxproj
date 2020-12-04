@@ -25,7 +25,8 @@
     <ClCompile Include="gameover.cpp" />
     <ClCompile Include="hako.cpp" />
     <ClCompile Include="hasigo.cpp" />
-    <ClCompile Include="kannatuban.cpp" />
+    <ClCompile Include="kannatuban_aka.cpp" />
+    <ClCompile Include="kannatuban_ao.cpp" />
     <ClCompile Include="keys.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
@@ -41,7 +42,8 @@
     <ClInclude Include="gameover.h" />
     <ClInclude Include="hako.h" />
     <ClInclude Include="hasigo.h" />
-    <ClInclude Include="kannatuban.h" />
+    <ClInclude Include="kannatuban_aka.h" />
+    <ClInclude Include="kannatuban_ao.h" />
     <ClInclude Include="keys.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="player_mesu.h" />

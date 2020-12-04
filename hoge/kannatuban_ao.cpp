@@ -1,4 +1,4 @@
-#include"kannatuban.h"
+#include"kannatuban_ao.h"
 
 Kannatu::Kannatu() {
     is_pressed_ = false;
