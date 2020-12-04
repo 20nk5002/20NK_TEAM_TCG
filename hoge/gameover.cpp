@@ -12,13 +12,13 @@ bool Gameover::init()
     if( (sound_ = LoadSoundMem( "gameover.wav" )) == -1 ) {
         return false;
     }
-    PlaySoundMem( sound_, DX_PLAYTYPE_BACK );
+     PlaySoundMem( sound_, DX_PLAYTYPE_BACK );
 
     return true;
 }
 void Gameover::update()
 {
-
+ 
   /*  if(Å@à¯êî == 1 ) {
         transparent_ = 255;
     }

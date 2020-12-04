@@ -92,6 +92,7 @@ bool Map::init( int map_Number_ )
 
 void Map::update()
 {
+    StopSoundMem( sound_ );
 }
 
 void Map::draw()
