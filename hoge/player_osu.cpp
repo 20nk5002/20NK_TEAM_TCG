@@ -192,7 +192,7 @@ int Player_Osu::update( bool handle )
     }
     if( fall_ > 32 ) {
 
-        return 10;
+        return -1;
     }
 
     return is_where_;

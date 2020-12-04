@@ -15,12 +15,12 @@ bool Game::init( int map_Number_ )
         if( hako[ i ].init( i, map_Number_ ) == false )return false;
     }
    // if( gameover.init() == false )return false;
+    handle_ = 0;
 
     return true;
 
 }
 
-bool handle = 0;
 int mesu_Position;
 int osu_Position;
 
@@ -31,18 +31,18 @@ int Game::update()
     const char* keys = Keyboard::getPressed();
     if( xinput.Buttons[ XINPUT_BUTTON_DPAD_DOWN ] == 1 || keys[KEY_INPUT_DOWN] )
     {
-        if( handle )
+        if( handle_ )
         {
-            handle = false;
+            handle_ = false;
         }
         else
-            handle = true;
+            handle_ = true;
     }
     map.update();
-    osu_Position = player_Osu.update( !handle );
-    mesu_Position = player_Mesu.update( handle );
+    osu_Position = player_Osu.update( !handle_ );
+    mesu_Position = player_Mesu.update( handle_ );
     for( int i = 0; i < 5; i++ ) {
-        hako[ i ].update( osu_Position, mesu_Position, handle, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
+        hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
     }
     clear.update( 0 );
     if(mesu_Position == osu_Position)
@@ -50,7 +50,7 @@ int Game::update()
         clear.update( 1 );
        return 1;
     }
-    if( mesu_Position == 10 || osu_Position == 10 )
+    if( mesu_Position == -1 || osu_Position == -1 )
     {
         destroy();
         game_over_ = 1;

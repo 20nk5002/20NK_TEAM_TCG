@@ -15,6 +15,7 @@ class Game
 {
 private:
     int game_over_;
+    bool handle_;
     Player_Mesu player_Mesu;
     Player_Osu player_Osu;
     Hako hako[ 6 ];

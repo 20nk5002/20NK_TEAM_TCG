@@ -195,7 +195,7 @@ int  Player_Mesu::update( bool handle )
     }
     if( fall_  >32 ) {
         
-         return 10;
+         return -1;
     }
    
 

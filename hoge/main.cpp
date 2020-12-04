@@ -17,6 +17,7 @@ enum
     kGAME_UPDATE,
     kFADE_UPDATE0,
     kFADE_UPDATE1,
+    kFADE_UPDATE2,
     kGAME_CLEAR,
     kGAME_OVER,
     kSTOP_SCENE
@@ -26,7 +27,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 1;
+    int map_Number_ = 3;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
 
@@ -139,6 +140,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 continue;
             }break;
         case kGAME_UPDATE:
+            if( xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] )
+            {
+                work = kFADE_UPDATE2;
+                continue;
+            }
             scene_Change_ = game.update();
             if( scene_Change_ == 1 )
             {
@@ -180,6 +186,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
 
                 }
             }break;
+        case kFADE_UPDATE2:
+            if( fade.update() >= 255 )
+            {
+                work = kGAME_INIT;
+                game.destroy();
+                continue;
+            }break;
         }
         
         Keyboard::update();
@@ -194,6 +207,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE0:
         case kTITLE_UPDATE:title.draw(); break;
         case kFADE_UPDATE1:
+        case kFADE_UPDATE2:
         case kSTOP_SCENE:
         case kGAME_UPDATE: game.draw(); break;
         case kGAME_CLEAR:allclear.draw(); break;
