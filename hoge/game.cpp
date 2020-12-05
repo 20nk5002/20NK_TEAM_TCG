@@ -15,8 +15,10 @@ bool Game::init( int map_Number_ )
         if( hako[ i ].init( i, map_Number_ ) == false )return false;
         else  hako_is_where_[ i ]= hako[ i ].init( i, map_Number_ );
     }
-   // if( gameover.init() == false )return false;
+   // •K‚¸Å‰‚Ì‘€ì‚ªƒIƒX‚É‚È‚é‚æ‚¤‚É‚·‚é‚½‚ß   
     handle_ = 0;
+    
+    clear.update(0);
 
     return true;
 
@@ -45,7 +47,7 @@ int Game::update()
     for( int i = 0; i < 5; i++ ) {
         hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
     }
-    clear.update( 0 );
+ 
     if(mesu_Position == osu_Position)
     {
         map.update();
@@ -66,14 +68,17 @@ int Game::update()
 }
 void Game::draw()
 {
-    if( game_over_ == 0 ) {
+    if (game_over_ == 0) {
         map.draw();
-        for( int i = 0; i < 5; i++ ) {
-            hako[ i ].draw();
+        for (int i = 0; i < 5; i++) {
+            hako[i].draw();
         }
         player_Mesu.draw();
         player_Osu.draw();
-        clear.draw();
+        if (mesu_Position == osu_Position)
+        {
+            clear.draw();
+        }
     }
     else
         gameover.draw();
