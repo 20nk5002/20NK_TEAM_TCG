@@ -1,4 +1,5 @@
 #pragma once
+#include"map.h"
 //プレイアー
 
 struct Chip_
@@ -23,12 +24,13 @@ private:
     int sin_hako_[ 6 ];
     int n2 = 0;
     int j = 0;
+    Map* map;
 
 public:
     Chip_* chips;
     Player_Mesu();
     ~Player_Mesu();
-    bool init( int map_Number_ );
+    bool init( int map_Number_, Map* map );
     int update( bool handle ,int hako_is[]);
     void draw();
     void destroy();

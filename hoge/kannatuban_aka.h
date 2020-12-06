@@ -1,6 +1,6 @@
 #pragma once
 
-struct Chip_
+struct Chips_
 {
     int x_, y_;
     int trim_x_, trim_y_;
@@ -8,7 +8,7 @@ struct Chip_
    
 
     // コンストラクタ
-    Chip_();
+    Chips_();
 };
 
 class Kannatu_Aka {
@@ -23,7 +23,7 @@ private:
     int aka_y;
    
 public:
-    Chip_* chips;
+    Chips_* chips;
     Kannatu_Aka();
     ~Kannatu_Aka();
 

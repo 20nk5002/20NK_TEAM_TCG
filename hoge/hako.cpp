@@ -9,23 +9,25 @@ Hako::Hako() {
     texture = -1;
     box_x = box_y = 0;
     is_where_ = -1;
-    width_ = height_ = 0;
+    width_ = 20;
+        height_ = 12;
     chips = NULL;
 }
 Hako::~Hako() {
 
 }
 
-bool Hako::init( const int n , int map_Number_ ) {
+bool Hako::init( const int n , int map_Number_, Map* map ) {
     FILE* fp = 0;
     int n2 = n;
 
+    this->map = map;
 
     if( (texture = LoadGraph( "karichip.png" )) == -1 ) {
         return false;
     }
 
-
+/*
     char file_name[ _MAX_PATH ];
     sprintf( file_name, "stage%d.fmf", map_Number_ );;
     fp = fopen( file_name, "rb" );
@@ -54,12 +56,12 @@ bool Hako::init( const int n , int map_Number_ ) {
 
     // fmfヘッダー部分をスキップ
     fseek( fp, 20L, SEEK_SET );
-
+    */
     // 全チップデータの格納
     for( int i = 0; i < width_ * height_; i++ )
     {
-        fread( &chips[ i ].id, sizeof( char ), 1, fp );
-        if( chips[ i ].id == 9 ) {
+       // fread( map->chips[ i ].id, sizeof( char ), 1, fp );
+        if( map->chips[ i ].id == 9 ) {
             if( n2 == 0 ) {
                 is_where_ = i;
                 n2 -= 1;
@@ -83,14 +85,14 @@ bool Hako::init( const int n , int map_Number_ ) {
     box_y1 = box_y = is_where_ / 20 * 64;
 
     // ファイルを閉じる
-    fclose( fp );
-    f_ = 0;
+  //  fclose( fp );
+  //  f_ = 0;
     
     return true;
 }
 int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held ) {
     
-    if( (chips[ is_where_ + 20 ].id) == 0 ) {
+    if( (map->chips[ is_where_ + 20 ].id) == 0 ) {
         f_ = 16;
 
     }
@@ -100,10 +102,10 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
         }
         else {
             f_ -= 16;
-            chips[ is_where_ ].id = 0;
+           // map->chips[ is_where_ ].id = 0;
             box_y1 = box_y;
             is_where_ += 20;
-            chips[ is_where_ ].id = 9;
+            map->chips[ is_where_ ].id = 9;
             
         }
     }
@@ -132,7 +134,7 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
 void Hako::draw() {
     
     DrawRectGraph( box_x, box_y, 9 * 64, 0, 64, 64, texture, 0, 0, 0 );
-    DrawFormatString( box_x, box_y, GetColor( 255, 255, 255 ), ":%d:%d", (chips[ is_where_ + 20 ].id), (chips[ is_where_ ].id) );
+  //  DrawFormatString( box_x, box_y, GetColor( 255, 255, 255 ), ":%d:%d", (chips[ is_where_ + 20 ].id), (chips[ is_where_ ].id) );
 
 }
 void Hako::destroy() {

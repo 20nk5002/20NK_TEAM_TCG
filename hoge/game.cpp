@@ -8,12 +8,12 @@ bool Game::init( int map_Number_ )
 {
     game_over_ = 0;
     if( map.init( map_Number_ ) == false )return false;
-    if( player_Mesu.init( map_Number_ ) == false )return false;
-    if( player_Osu.init( map_Number_ ) == false )return false;
+    if( player_Mesu.init( map_Number_ , &map) == false )return false;
+    if( player_Osu.init( map_Number_,&map ) == false )return false;
    // if( clear.init() == false )return false;
     for( int i = 0; i < 5; i++ ) {
-        if( hako[ i ].init( i, map_Number_ ) == false )return false;
-        else  hako_is_where_[ i ]= hako[ i ].init( i, map_Number_ );
+        if( hako[ i ].init( i, map_Number_, &map ) == false )return false;
+        else  hako_is_where_[ i ]= hako[ i ].init( i, map_Number_ ,&map);
     }
    // •K‚¸Å‰‚Ì‘€ì‚ªƒIƒX‚É‚È‚é‚æ‚¤‚É‚·‚é‚½‚ß   
     handle_ = 0;

@@ -3,6 +3,7 @@
 #include"player_mesu.h"
 #include"keys.h"
 
+
 Chip_::Chip_() {
     x_ = y_ = 0;
     trim_x_ = trim_y_ = 0;
@@ -21,10 +22,12 @@ Player_Mesu::~Player_Mesu()
 {
     destroy();
 }
-bool Player_Mesu::init( int map_Number_ )
+bool Player_Mesu::init( int map_Number_ , Map* map)
 {
 
     FILE* fp;
+
+    this->map = map;
 
     // テクスチャの読み込み
 
@@ -66,16 +69,16 @@ bool Player_Mesu::init( int map_Number_ )
             is_where_ = i;
         }
 
- /*       // 描画範囲の指定
+       // 描画範囲の指定
         chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
         chips[ i ].trim_y_ = chips[ i ].id / 12 * 64;
         // 座標の設定
         chips[ i ].x_ = 64 * (i % width_);
-        chips[ i ].y_ = 64 * (i / width_);*/
+        chips[ i ].y_ = 64 * (i / width_);
     }
     // ファイルを閉じる
     fclose( fp );
-
+    
     textur = 0;
     x_ = x1_ = is_where_ % 20 * 64;
     y_ = y1_ = is_where_ / 20 * 64;
@@ -87,8 +90,8 @@ bool Player_Mesu::init( int map_Number_ )
     }
     for( int i = 0; i < width_ * height_; i++ )
     {
-        fread( &chips[ i ].id, sizeof( char ), 1, fp );
-        if( chips[ i ].id == 9 ) {
+       // fread( map->chips[ i ].id, sizeof( char ), 1, fp );
+        if( map->chips[ i ].id == 9 ) {
             if( n2 == 0 ) {
                sin_hako_[j++] = i;
                 n2 -= 1;
@@ -110,7 +113,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
     
     for( int i = 0; i < 6; i++ ) {
 
-        (chips[ sin_hako_[ i ] ].id) = 0;
+        (map->chips[ sin_hako_[ i ] ].id) = 0;
         sin_hako_[ i ] = hako_is[ i ];
        
     }
@@ -133,7 +136,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
     {
         if( x_ != 1216 ) {
             if( f_ != 0 ) {}
-            else if( (chips[ is_where_ + 1 ].id) == 1 ) {}
+            else if( (map->chips[ is_where_ + 1 ].id) == 1 ) {}
             else if( f_ & 1 ) {
 
             }
@@ -147,7 +150,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
 
         if( x_ != 0 ) {
             if( f_ != 0 ) {}
-            else if( (chips[ is_where_ - 1 ].id) == 1 ) {}
+            else if( (map->chips[ is_where_ - 1 ].id) == 1 ) {}
             else if( f_ & 2 ) {
 
             }
@@ -160,7 +163,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
 
     //上移動　フラグ4
     else  if( (keys[ KEY_INPUT_UP ] == 1 || xinput.Buttons[ XINPUT_BUTTON_DPAD_UP ] /*&& f_ == 0*/) * handle ) {
-        if( (chips[ is_where_ ].id) == 2|| (chips[ is_where_ ].id) == 5||(chips[ is_where_ ].id) == 8 ) {
+        if( (map->chips[ is_where_ ].id) == 2|| (map->chips[ is_where_ ].id) == 5||(map->chips[ is_where_ ].id) == 8 ) {
             if( f_ != 0 ) {}
             else if( f_ & 8 ) {
 
@@ -229,7 +232,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
 void  Player_Mesu::draw()
 {
     DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 1 );
-    DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, x_ );
+   // DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, x_ );
     }
 void  Player_Mesu::destroy()
 {

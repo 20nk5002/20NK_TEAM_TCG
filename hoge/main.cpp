@@ -27,7 +27,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 1;
+    int map_Number_ = 0;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
     int no_again = 0;

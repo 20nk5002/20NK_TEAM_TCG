@@ -9,6 +9,8 @@
 #include"keys.h"
 #include"clear.h"
 #include"gameover.h"
+#include"kannatuban_aka.h"
+#include"kannatuban_ao.h"
 
 //　ゲームクラス
 class Game
@@ -25,6 +27,9 @@ private:
     Keyboard keboard;
     Clear clear;
     Gameover gameover;
+    Kannatu_Aka kannatuban_Aka;
+    Kannatu_Ao kannatuban_Ao;
+
    
 public:
     bool init(int map_Number_);
