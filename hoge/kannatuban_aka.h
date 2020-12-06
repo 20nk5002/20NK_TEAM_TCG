@@ -5,6 +5,7 @@ struct Chip_
     int x_, y_;
     int trim_x_, trim_y_;
     int id;
+   
 
     // コンストラクタ
     Chip_();
@@ -16,6 +17,10 @@ private:
     int kannatu_x_, kannatu_y_;
     int width_ = 0; int height_ = 0;
     int is_where_;
+    int transparent_;
+    int texture;
+    int aka_x;
+    int aka_y;
    
 public:
     Chip_* chips;

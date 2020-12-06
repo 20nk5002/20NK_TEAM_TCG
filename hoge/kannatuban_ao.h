@@ -6,7 +6,10 @@ private:
     bool is_pressed_ = false;
     int kannatu_x_, kannatu_y_;
     int is_where_;
-   
+    int transparent_;
+    int texture;
+    int ao_x;
+    int ao_y;
    
 public:
   
