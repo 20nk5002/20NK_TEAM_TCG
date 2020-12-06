@@ -101,7 +101,7 @@ void Map::draw()
     for( int i = 0; i < width_ * height_; i++ )
     {
         // 全チップの描画
-        if( chips[ i ].id <= 8 ) {
+        if( chips[ i ].id <= 2 ) {
             DrawRectGraph( chips[ i ].x_, chips[ i ].y_, chips[ i ].trim_x_, chips[ i ].trim_y_, 64, 64, map_texture_, true );
         }
         DrawFormatString( chips[ i ].x_, chips[ i ].y_, 0xFFFFFF, " %d\n", chips[ i ].id );
