@@ -17,6 +17,7 @@ private:
     int texture;
     int box_x, box_y, box_x1, box_y1;
     int is_where_;
+    int sin_is_where_;
     int width_;
     int height_;
     int f_;

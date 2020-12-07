@@ -87,7 +87,7 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
     // ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
   //  fclose( fp );
     f_ = 0;
-    
+    sin_is_where_ = is_where_;
     return true;
 }
 int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held, bool red_pressed, bool blue_pressed ) {
@@ -102,12 +102,18 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
         }
         else {
             f_ -= 16;
-            if( map->chips[ is_where_ ].id != 0 ) {
-                map->chips[ is_where_ ].id = 0;
+           
+            if( map->chips[ is_where_ ].id == 9 ) {
+                    map->chips[ is_where_ ].id = 0;
+                }
+            
                 box_y1 = box_y;
                 is_where_ += 20;
-            }
-            map->chips[ is_where_ ].id = 9;
+           
+           // if( map->chips[ sin_is_where_ +20].id )
+                if( map->chips[ is_where_ + 20 ].id != 0 ) {
+                    map->chips[ is_where_ ].id = 9;
+                }
 
         }
     }
