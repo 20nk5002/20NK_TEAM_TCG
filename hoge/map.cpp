@@ -101,10 +101,10 @@ void Map::draw( bool red_pressed, bool blue_pressed )
     for( int i = 0; i < width_ * height_; i++ )
     {
         if( chips[ i ].id == 4 || chips[ i ].id == 5 ) {
-            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * red_pressed) );
+            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * !red_pressed) );
         }
         if( chips[ i ].id == 7 || chips[ i ].id == 8 ) {
-            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * blue_pressed) );
+            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * !blue_pressed) );
         }
         // 全チップの描画
         if( chips[ i ].id <= 8 ) {
