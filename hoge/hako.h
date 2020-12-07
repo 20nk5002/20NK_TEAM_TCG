@@ -28,7 +28,7 @@ public:
 
     Chip_4* chips;
     bool init( int n , int map_Number_, Map* map );
-    int update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held );
+    int update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held, bool red_pressed, bool blue_pressed );
     void draw();
     void destroy();
 };
