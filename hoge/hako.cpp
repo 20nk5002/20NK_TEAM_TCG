@@ -86,7 +86,7 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
 
     // ƒtƒ@ƒCƒ‹‚ð•Â‚¶‚é
   //  fclose( fp );
-  //  f_ = 0;
+    f_ = 0;
     
     return true;
 }
