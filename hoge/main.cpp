@@ -27,7 +27,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 0;
+    int map_Number_ = 0 ;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
     int no_again = 0;
@@ -43,7 +43,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
     // DXライブラリの初期化
     if( DxLib_Init() == -1 )
     {
-        // エラー
+        // エラー 
         return 0;
     }
 
@@ -113,6 +113,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             if( title.update() == false )
             {
                 clear.destroy();
+                game.destroy();
                 work = kFADE_UPDATE0;
                 continue;
             }break;
@@ -128,7 +129,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             {
                 return 0;
             }
-           
+          
+
             work = kFADE_UPDATE1;
             break;
         case kFADE_UPDATE1:
@@ -177,11 +179,13 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
            
             if (check_Botan_ == 1)
             {
-                if (map_Number_ > 3) {
+                if (map_Number_ >= 3) {
+                    game.destroy();
                     work = kGAME_CLEAR;
                 }
                 else {
                     map_Number_++;
+                    game.destroy();
                     work = kTITLE_INIT;
 
                 }
