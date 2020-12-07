@@ -63,9 +63,11 @@ int Game::update()
     mesu_Position = player_Mesu.update( handle_, hako_is_where_, kannatu_pressed_red, kannatu_pressed_blue );
     for( int i = 0; i < 5; i++ ) {
         for( int j = 0; j < 5; j++ ) {
-            hako_is_where_[ i ] = hako[ i ].update( osu_Position, mesu_Position, handle_, hako_is_where_[ j ], xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ], kannatu_pressed_red, kannatu_pressed_blue );
+
+            hako_is_where_[ i ] = hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ], kannatu_pressed_red, kannatu_pressed_blue );
         }
     }
+    
 
  
     if(mesu_Position == osu_Position)

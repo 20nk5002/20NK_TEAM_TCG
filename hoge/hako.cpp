@@ -91,9 +91,9 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
     return true;
 }
 
-int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle,int hako_is_, char space_or_A_held, bool red_pressed, bool blue_pressed ) {
+int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held, bool red_pressed, bool blue_pressed ) {
 
-        if( ((map->chips[ is_where_ + 20 ].id) == 0) || ((map->chips[ is_where_ + 20 ].id) == 3) || ((map->chips[ is_where_ + 20 ].id) == 6) || ((map->chips[ is_where_ + 20 ].id) == 4|| (is_where_ +20)==hako_is_ && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 && !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 && !blue_pressed) ) {
+        if( ((map->chips[ is_where_ + 20 ].id) == 0) || ((map->chips[ is_where_ + 20 ].id) == 3) || ((map->chips[ is_where_ + 20 ].id) == 6) || ((map->chips[ is_where_ + 20 ].id) == 4&& !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 && !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 && !blue_pressed) ) {
             f_ = 16;
 
         
