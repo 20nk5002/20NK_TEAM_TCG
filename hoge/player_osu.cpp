@@ -96,7 +96,7 @@ int Player_Osu::update( bool handle, int hako_is[],bool red_pressed,bool blue_pr
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getHeld();
 
-    if( ((map->chips[ is_where_ + 20 ].id) == 0) || ((map->chips[ is_where_ + 20 ].id) == 4 * !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 * !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 * !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 * !blue_pressed) ) {
+    if( ((map->chips[ is_where_ + 20 ].id) == 0)|| ((map->chips[ is_where_ + 20 ].id) == 3)|| ((map->chips[ is_where_ + 20 ].id) == 6) || ((map->chips[ is_where_ + 20 ].id) == 4 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 && !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 && !blue_pressed) ) {
         f_ = 16;
         ++fall_;
     }

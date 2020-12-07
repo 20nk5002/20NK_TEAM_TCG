@@ -44,14 +44,14 @@ int Game::update()
             handle_ = true;
     }
     for( int i = 0; i < 5; i++ ) {
-        kannatu_pressed_red = kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
-        if( kannatu_pressed_red == true ) {
+        //kannatu_pressed_red = kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+        if( kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] ) == true ) {
             break;
         }
     }
     for( int i = 0; i < 5; i++ ) {
-        kannatu_pressed_blue = kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
-        if( kannatu_pressed_blue == true ) {
+       // kannatu_pressed_blue = kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+        if( kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] ) == true ) {
             break;
         }
     }
