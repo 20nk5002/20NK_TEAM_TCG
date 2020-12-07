@@ -94,6 +94,7 @@ void Game::draw()
         map.draw( kannatu_pressed_red, kannatu_pressed_blue );
         for (int i = 0; i < 5; i++) {
             hako[i].draw();
+
         }
         player_Mesu.draw();
         player_Osu.draw();
@@ -107,6 +108,9 @@ void Game::draw()
 }
 void Game::destroy()
 {
+    for( int i = 0; i < 5; i++ ) {
+        hako_is_where_[ i ];
+    }
     map.destroy();
     player_Mesu.destroy();
     player_Osu.destroy();
