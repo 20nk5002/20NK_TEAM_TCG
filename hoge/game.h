@@ -20,6 +20,8 @@ private:
     int sin_hako_is_where_[ 6 ];
     int game_over_;
     bool handle_;
+    bool kannatu_pressed_red = 0;
+    bool kannatu_pressed_blue = 0;
     Player_Mesu player_Mesu;
     Player_Osu player_Osu;
     Hako hako[ 6 ];

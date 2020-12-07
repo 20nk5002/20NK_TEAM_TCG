@@ -25,6 +25,6 @@ public:
     ~Map();
     bool init( int map_Number_ );
     void update();
-    void draw();
+    void draw( bool red_pressed, bool blue_pressed );
     void destroy();
 };

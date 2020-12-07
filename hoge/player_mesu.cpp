@@ -108,7 +108,7 @@ bool Player_Mesu::init( int map_Number_ , Map* map)
     return true;
 }
 
-int  Player_Mesu::update( bool handle, int hako_is[] )
+int  Player_Mesu::update( bool handle, int hako_is[], bool red_pressed, bool blue_pressed )
 {
     
     for( int i = 0; i < 6; i++ ) {
@@ -122,7 +122,7 @@ int  Player_Mesu::update( bool handle, int hako_is[] )
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
     const char* keys = Keyboard::getHeld();
 
-    if( (chips[ is_where_ + 20 ].id) == 0 ) {
+    if( ((map->chips[ is_where_ + 20 ].id) == 0 ) || ((map->chips[ is_where_ + 20 ].id) == 4 * !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 * !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 * !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 * !blue_pressed) ) {
         f_ = 16;
         ++fall_;
     }

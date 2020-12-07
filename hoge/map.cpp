@@ -95,16 +95,24 @@ void Map::update()
     StopSoundMem( sound_ );
 }
 
-void Map::draw()
+void Map::draw( bool red_pressed, bool blue_pressed )
 {
 
     for( int i = 0; i < width_ * height_; i++ )
     {
+        if( chips[ i ].id == 4 || chips[ i ].id == 5 ) {
+            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * red_pressed) );
+        }
+        if( chips[ i ].id == 7 || chips[ i ].id == 8 ) {
+            SetDrawBlendMode( DX_BLENDMODE_ALPHA, 256 - (128 * blue_pressed) );
+        }
         // 全チップの描画
-        if( chips[ i ].id <= 2 ) {
+        if( chips[ i ].id <= 8 ) {
             DrawRectGraph( chips[ i ].x_, chips[ i ].y_, chips[ i ].trim_x_, chips[ i ].trim_y_, 64, 64, map_texture_, true );
         }
         DrawFormatString( chips[ i ].x_, chips[ i ].y_, 0xFFFFFF, " %d\n", chips[ i ].id );
+
+        SetDrawBlendMode( DX_BLENDMODE_NOBLEND, 0 );
     }
 }
 

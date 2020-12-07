@@ -41,12 +41,25 @@ int Game::update()
         else
             handle_ = true;
     }
+    for( int i = 0; i < 5; i++ ) {
+        kannatu_pressed_red = kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+        if( kannatu_pressed_red == true ) {
+            break;
+        }
+    }
+    for( int i = 0; i < 5; i++ ) {
+        kannatu_pressed_blue = kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+        if( kannatu_pressed_blue == true ) {
+            break;
+        }
+    }
   
-    osu_Position = player_Osu.update( !handle_, hako_is_where_ );
-    mesu_Position = player_Mesu.update( handle_,hako_is_where_ );
+    osu_Position = player_Osu.update( !handle_, hako_is_where_, kannatu_pressed_red, kannatu_pressed_blue );
+    mesu_Position = player_Mesu.update( handle_, hako_is_where_, kannatu_pressed_red, kannatu_pressed_blue );
     for( int i = 0; i < 5; i++ ) {
         hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
     }
+
  
     if(mesu_Position == osu_Position)
     {
@@ -69,7 +82,7 @@ int Game::update()
 void Game::draw()
 {
     if (game_over_ == 0) {
-        map.draw();
+        map.draw( kannatu_pressed_red, kannatu_pressed_blue );
         for (int i = 0; i < 5; i++) {
             hako[i].draw();
         }

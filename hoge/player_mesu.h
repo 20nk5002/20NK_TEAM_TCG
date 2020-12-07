@@ -31,7 +31,7 @@ public:
     Player_Mesu();
     ~Player_Mesu();
     bool init( int map_Number_, Map* map );
-    int update( bool handle ,int hako_is[]);
+    int update( bool handle ,int hako_is[], bool red_pressed, bool blue_pressed );
     void draw();
     void destroy();
 
