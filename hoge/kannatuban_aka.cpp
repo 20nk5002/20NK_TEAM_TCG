@@ -57,7 +57,7 @@ bool Kannatu_Aka::init( int map_Number_ ) {
     for( int i = 0; i < width_ * height_; i++ )
     {
         fread( &chips[ i ].id, sizeof( char ), 1, fp );
-        if( chips[ i ].id == 4 ) {
+        if( chips[ i ].id == 3 ) {
             is_where_ = i;
         }
     }

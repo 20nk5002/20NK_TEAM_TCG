@@ -43,23 +43,26 @@ int Game::update()
         else
             handle_ = true;
     }
-    for( int i = 0; i < 5; i++ ) {
-        //kannatu_pressed_red = kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+
+    for( int i = 0; i < 6; i++ ) {
         if( kannatuban_Aka.update( osu_Position, mesu_Position, hako_is_where_[ i ] ) == true ) {
+            kannatu_pressed_red = true;
             break;
         }
+        kannatu_pressed_red = false;
     }
-    for( int i = 0; i < 5; i++ ) {
-       // kannatu_pressed_blue = kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] );
+    for( int i = 0; i < 6; i++ ) {
         if( kannatuban_Ao.update( osu_Position, mesu_Position, hako_is_where_[ i ] ) == true ) {
+            kannatu_pressed_blue = true;
             break;
         }
+        kannatu_pressed_blue = false;
     }
   
     osu_Position = player_Osu.update( !handle_, hako_is_where_, kannatu_pressed_red, kannatu_pressed_blue );
     mesu_Position = player_Mesu.update( handle_, hako_is_where_, kannatu_pressed_red, kannatu_pressed_blue );
     for( int i = 0; i < 5; i++ ) {
-        hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] );
+        hako[ i ].update( osu_Position, mesu_Position, handle_, xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ], kannatu_pressed_red, kannatu_pressed_blue );
     }
 
  

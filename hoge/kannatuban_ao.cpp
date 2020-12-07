@@ -56,7 +56,7 @@ bool Kannatu_Ao::init( int map_Number_ ) {
     for( int i = 0; i < width_ * height_; i++ )
     {
         fread( &chips[ i ].id, sizeof( char ), 1, fp );
-        if( chips[ i ].id == 7 ) {
+        if( chips[ i ].id == 6 ) {
             is_where_ = i;
         }
     }

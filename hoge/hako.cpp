@@ -90,9 +90,9 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
     
     return true;
 }
-int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held ) {
-    
-    if( (map->chips[ is_where_ + 20 ].id) == 0 ) {
+int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char space_or_A_held, bool red_pressed, bool blue_pressed ) {
+
+    if( ((map->chips[ is_where_ + 20 ].id) == 0) || ((map->chips[ is_where_ + 20 ].id) == 3) || ((map->chips[ is_where_ + 20 ].id) == 6) || ((map->chips[ is_where_ + 20 ].id) == 4 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 5 && !red_pressed) || ((map->chips[ is_where_ + 20 ].id) == 7 && !blue_pressed) || ((map->chips[ is_where_ + 20 ].id) == 8 && !blue_pressed) ) {
         f_ = 16;
 
     }
@@ -107,14 +107,14 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
                 box_y1 = box_y;
                 is_where_ += 20;
             }
-                map->chips[ is_where_ ].id = 9;
-            
+            map->chips[ is_where_ ].id = 9;
+
         }
     }
     //プレイヤーの位置
     int handling_character_is_where_ = (osu_is_where_ * (!handle)) + (mesu_is_where_ * handle);
     if( space_or_A_held == 1 ) {
- /*if( handling_character_is_where_ + 1 != 1 ) {*/
+        /*if( handling_character_is_where_ + 1 != 1 ) {*/
         if( is_where_ - 1 != 1 ) {
             if( handling_character_is_where_ - 1 == is_where_ ) {
 
@@ -132,9 +132,9 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
             }
         }
     }
-   
-   
-    
+
+
+
     return is_where_;
 }
 void Hako::draw() {
