@@ -27,36 +27,6 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
         return false;
     }
 
-/*
-    char file_name[ _MAX_PATH ];
-    sprintf( file_name, "stage%d.fmf", map_Number_ );;
-    fp = fopen( file_name, "rb" );
-
-    // NULLチェック
-    if( fp == NULL )
-    {
-        // エラー
-        return false;
-    }
-
-    fseek( fp, 8L, SEEK_SET );
-
-    fread( &width_, sizeof( int ), 1, fp );
-    fread( &height_, sizeof( int ), 1, fp );
-
-    // 横幅*縦幅のメモリを確保
-    chips = new Chip_4[ width_ * height_ ];
-
-    // メモリが確保できたか
-    if( chips == NULL )
-    {
-        // エラー
-        return false;
-    }
-
-    // fmfヘッダー部分をスキップ
-    fseek( fp, 20L, SEEK_SET );
-    */
     // 全チップデータの格納
     for( int i = 0; i < width_ * height_; i++ )
     {
@@ -70,14 +40,6 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
                 n2 -= 1;
             }
         }
-
-        /*       // 描画範囲の指定
-               chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
-               chips[ i ].trim_y_ = chips[ i ].id / 12 * 64;
-               // 座標の設定
-               chips[ i ].x_ = 64 * (i % width_);
-               chips[ i ].y_ = 64 * (i / width_);*/
-
     }
     box_x = is_where_ % 20 * 64;
     box_y = is_where_ / 20 * 64;
@@ -85,7 +47,7 @@ bool Hako::init( const int n , int map_Number_, Map* map ) {
     box_y1 = box_y = is_where_ / 20 * 64;
 
     // ファイルを閉じる
-  //  fclose( fp );
+ 
     f_ = 0;
     sin_is_where_ = is_where_;
     return true;
@@ -122,21 +84,17 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
     //プレイヤーの位置
     int handling_character_is_where_ = (osu_is_where_ * (!handle)) + (mesu_is_where_ * handle);
     if( space_or_A_held == 1 ) {
-        /*if( handling_character_is_where_ + 1 != 1 ) {*/
         if( is_where_ - 1 != 1 ) {
             if( handling_character_is_where_ - 1 == is_where_ ) {
 
                 box_x -= 64;
                 is_where_ -= 1;
-                /* }*/
             }
         }
         if( is_where_ - 1 != 1 ) {
             if( handling_character_is_where_ + 1 == is_where_ ) {
-                /* if( handling_character_is_where_ + 1 != 1 ) {*/
                 box_x += 64;
                 is_where_ += 1;
-                /* }*/
             }
         }
     }
@@ -148,8 +106,6 @@ int Hako::update( int osu_is_where_, int mesu_is_where_, const bool handle, char
 void Hako::draw() {
     
     DrawRectGraph( box_x, box_y, 9 * 64, 0, 64, 64, texture, 0, 0, 0 );
-  //  DrawFormatString( box_x, box_y, GetColor( 255, 255, 255 ), ":%d:%d", (chips[ is_where_ + 20 ].id), (chips[ is_where_ ].id) );
-
 }
 void Hako::destroy() {
     if( texture != -1 ) {

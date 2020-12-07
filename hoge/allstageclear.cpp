@@ -12,12 +12,6 @@ bool Allclear::init()
 }
 void Allclear::update()
 {
-    /*  if(@ˆø” == 1 ) {
-          transparent_ = 255;
-      }
-      else {
-          transparent_ = 0;
-      }*/
 }
 void Allclear::draw()
 {

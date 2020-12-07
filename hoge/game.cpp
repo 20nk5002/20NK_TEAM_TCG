@@ -12,7 +12,6 @@ bool Game::init( int map_Number_ )
     if( player_Osu.init( map_Number_,&map ) == false )return false;
     if( kannatuban_Aka.init( map_Number_ ) == false )return false;
     if( kannatuban_Ao.init( map_Number_ ) == false )return false;
-   // if( clear.init() == false )return false;
     for( int i = 0; i < 5; i++ ) {
         if( hako[ i ].init( i, map_Number_, &map ) == false )return false;
         else  hako_is_where_[ i ]= hako[ i ].init( i, map_Number_ ,&map);

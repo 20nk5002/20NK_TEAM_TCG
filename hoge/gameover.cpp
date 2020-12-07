@@ -18,13 +18,6 @@ bool Gameover::init()
 }
 void Gameover::update()
 {
- 
-  /*  if(@ˆø” == 1 ) {
-        transparent_ = 255;
-    }
-    else {
-        transparent_ = 0;
-    }*/
 }
 void Gameover::draw()
 {

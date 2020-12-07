@@ -14,7 +14,6 @@ Chip_::Chip_() {
 
 Player_Mesu::Player_Mesu() 
 {
-   // init();
     chips = NULL;
 }
 
@@ -110,13 +109,6 @@ bool Player_Mesu::init( int map_Number_ , Map* map)
 
 int  Player_Mesu::update( bool handle, int hako_is[], bool red_pressed, bool blue_pressed )
 {
-    
-   /* for( int i = 0; i < 6; i++ ) {
-
-        (map->chips[ sin_hako_[ i ] ].id) = 0;
-        sin_hako_[ i ] = hako_is[ i ];
-       
-    }*/
     //コントローラーの入力の取得
     XINPUT_STATE xinput;
     GetJoypadXInputState( DX_INPUT_PAD1, &xinput );
@@ -232,7 +224,6 @@ int  Player_Mesu::update( bool handle, int hako_is[], bool red_pressed, bool blu
 void  Player_Mesu::draw()
 {
     DrawRectGraph( x_, y_, 11 * 64, 0, 64, 64, textur, 1 );
-   // DrawFormatString( 10,10, GetColor( 255, 255, 255 ), ":%d:%d:%d", (chips[ is_where_+20 ].id), fall_, x_ );
     }
 void  Player_Mesu::destroy()
 {

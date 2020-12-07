@@ -65,13 +65,6 @@ bool Player_Osu::init(int map_Number_, Map* map )
         if( chips[ i ].id == 10 ) {
             is_where_ = i;
         }
-
-        /*       // 描画範囲の指定
-               chips[ i ].trim_x_ = chips[ i ].id % 12 * 64;
-               chips[ i ].trim_y_ = chips[ i ].id / 12 * 64;
-               // 座標の設定
-               chips[ i ].x_ = 64 * (i % width_);
-               chips[ i ].y_ = 64 * (i / width_);*/
     }
     // ファイルを閉じる
     fclose(fp);
@@ -204,7 +197,6 @@ int Player_Osu::update( bool handle, int hako_is[],bool red_pressed,bool blue_pr
 void Player_Osu:: draw()
 {
     DrawRectGraph( x_, y_, 10 * 64, 0, 64, 64, textur, 1 );
-    DrawFormatString( x_ + 30, y_, GetColor( 255, 255, 255 ), ":%d:%d:%d", x_, y_, f_);
 }
 void Player_Osu::destroy()
 {

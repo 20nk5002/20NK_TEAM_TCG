@@ -75,15 +75,7 @@ bool Kannatu_Ao::update( int osu_is_where_, int mesu_is_where_, int hako_is_wher
     return false;
 }
 void Kannatu_Ao::draw() {
-/*    // ブレンドモードを変更
-    SetDrawBlendMode(DX_BLENDMODE_ALPHA, transparent_);
 
-    DrawRectGraph(ao_x, ao_y, 3 * 64, 0, 64, 64, texture, 0, 0, 0);
-    DrawRectGraph(ao_x, ao_y, 4 * 64, 0, 64, 64, texture, 0, 0, 0);
-
-    // ブレンドモードを戻す
-    SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-    DrawRectGraph(ao_x, ao_y, 2 * 64, 0, 64, 64, texture, 0, 0, 0);*/
 }
 void Kannatu_Ao::destroy() {
     delete[] chips;

@@ -11,7 +11,6 @@ Chip::Chip()
 
 Map::Map()
 {
-   // init();
     chips = NULL;
 
 }
@@ -110,7 +109,6 @@ void Map::draw( bool red_pressed, bool blue_pressed )
         if( chips[ i ].id <= 8 ) {
             DrawRectGraph( chips[ i ].x_, chips[ i ].y_, chips[ i ].trim_x_, chips[ i ].trim_y_, 64, 64, map_texture_, true );
         }
-        DrawFormatString( chips[ i ].x_, chips[ i ].y_, 0xFFFFFF, " %d\n", chips[ i ].id );
 
         SetDrawBlendMode( DX_BLENDMODE_NOBLEND, 0 );
     }
