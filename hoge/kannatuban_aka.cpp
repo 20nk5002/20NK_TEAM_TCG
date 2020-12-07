@@ -71,13 +71,9 @@ bool Kannatu_Aka::init( int map_Number_ ) {
 bool Kannatu_Aka::update( int osu_is_where_, int mesu_is_where_, int hako_is_where_ ) {
 
     if( osu_is_where_ == is_where_||mesu_is_where_==is_where_||hako_is_where_==is_where_ ){ 
-        is_pressed_ = true;
+        return true;
     }
-    else {
-        is_pressed_ = false;
-    }
-
-    return is_pressed_;
+    return false;
 
 }
 void Kannatu_Aka::draw() {
