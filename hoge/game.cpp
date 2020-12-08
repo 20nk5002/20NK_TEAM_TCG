@@ -101,6 +101,13 @@ void Game::draw()
         {
             clear.draw();
         }
+        if( handle_ == 0 ) {
+            SetFontSize( 40 );
+            DrawString( 10, 10, "ÉIÉX", 0x238aff );
+        }
+        else if( handle_ == 1 ) {
+            DrawString( 10, 10, "ÉÅÉX", 0xef93b6);
+        }
     }
     else
         gameover.draw();

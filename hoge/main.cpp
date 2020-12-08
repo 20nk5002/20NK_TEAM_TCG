@@ -28,7 +28,7 @@ enum
 // WinMain
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLine, int nCmdShow )
 {
-    int map_Number_ = 0 ;
+    int map_Number_ = 0;
     int scene_Change_ = 0;
     int check_Botan_ = 0;
     int no_again = 0;
@@ -226,7 +226,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE2:
         case kSTOP_SCENE:
         case kGAME_UPDATE: game.draw(); break;
-        case kALLGAME_CLEAR:allclear.draw(); break;
+        case kALLGAME_CLEAR:
+        case kALLGAME_CLEARUPDATE:allclear.draw(); break;
         case kGAME_OVER:gameover.draw(); break;
         }
         fade.draw();
