@@ -18,7 +18,8 @@ enum
     kFADE_UPDATE0,
     kFADE_UPDATE1,
     kFADE_UPDATE2,
-    kGAME_CLEAR,
+    kALLGAME_CLEAR,
+    kALLGAME_CLEARUPDATE,
     kGAME_OVER,
     kSTOP_SCENE
 };
@@ -129,7 +130,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             {
                 return 0;
             }
-          
+
 
             work = kFADE_UPDATE1;
             break;
@@ -140,7 +141,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 continue;
             }break;
         case kGAME_UPDATE:
-            if( xinput.Buttons[ XINPUT_BUTTON_A ] == 1&&xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ]&& keys[ KEY_INPUT_DOWN ] )
+            if( xinput.Buttons[ XINPUT_BUTTON_A ] == 1 && xinput.Buttons[ XINPUT_BUTTON_A ] == 1 || keys[ KEY_INPUT_SPACE ] && keys[ KEY_INPUT_DOWN ] )
             {
                 work = kFADE_UPDATE2;
                 continue;
@@ -154,18 +155,18 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             {
                 work = kGAME_OVER;
             }break;
-        case  kGAME_CLEAR:
+        case  kALLGAME_CLEAR:
             if( allclear.init() == false )
             {
                 return 0;
-            }break;
+            }work = kALLGAME_CLEARUPDATE; break;
         case kGAME_OVER:
             if( no_again == 0 ) {
                 gameover.init();
                 no_again = 1;
             }
 
-            if (check_Botan_ == 1)
+            if( check_Botan_ == 1 )
             {
                 DxLib_End();
                 game.destroy();
@@ -176,12 +177,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
             }
             break;
         case kSTOP_SCENE:
-           
-            if (check_Botan_ == 1)
+
+            if( check_Botan_ == 1 )
             {
-                if (map_Number_ >= 3) {
+                if( map_Number_ >= 4 ) {
                     game.destroy();
-                    work = kGAME_CLEAR;
+                    work = kALLGAME_CLEAR;
                 }
                 else {
                     map_Number_++;
@@ -197,8 +198,19 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
                 game.destroy();
                 continue;
             }break;
+
+        case kALLGAME_CLEARUPDATE:
+            if( check_Botan_ == 1 )
+            {
+                DxLib_End();
+                game.destroy();
+                allclear.destroy();
+                gameover.destroy();
+                clear.destroy();
+                return 0;
+            }
+            break;
         }
-        
         Keyboard::update();
         const char* held = Keyboard::getReleased();
 
@@ -214,7 +226,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpcmdLin
         case kFADE_UPDATE2:
         case kSTOP_SCENE:
         case kGAME_UPDATE: game.draw(); break;
-        case kGAME_CLEAR:allclear.draw(); break;
+        case kALLGAME_CLEAR:allclear.draw(); break;
         case kGAME_OVER:gameover.draw(); break;
         }
         fade.draw();
